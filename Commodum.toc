@@ -1,0 +1,27 @@
+## Interface: 120005, 120001
+## Title: Commodum
+## Author: diomsg (Diom-Antonidas EU)
+
+## Version: @project-version@
+## IconTexture: Interface\AddOns\Commodum\media\icon.blp
+## LoadOnDemand: 0
+## DefaultState: enabled
+
+## Notes: xxx
+## Notes-deDE: xxx
+
+## LoadSavedVariablesFirst: 1
+## SavedVariables: Commodum_Options
+
+## AddonCompartmentFuncOnEnter: Commodum_CompartmentOnEnter
+## AddonCompartmentFuncOnLeave: Commodum_CompartmentOnLeave
+## AddonCompartmentFunc: Commodum_CompartmentOnClick
+
+## X-BuildDate: @build-date@
+## X-E-Mail: feedback@wow-addon.dev
+## X-Github: https://github.com/wow-addon-dev/Commodum
+## X-Curseforge: https://www.curseforge.com/wow/addons/commodum
+## X-Wago: https://addons.wago.io/addons/commodum
+
+Commodum.xml
+Commodum.lua
