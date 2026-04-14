@@ -1,3 +1,0 @@
-[submodule "lib/WoW-AD-LibShared"]
-	path = lib/WoW-AD-LibShared
-	url = https://github.com/wow-addon-dev/shared-lib.git

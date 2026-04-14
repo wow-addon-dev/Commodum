@@ -2,7 +2,6 @@ local addonName, COM = ...
 
 local L = COM.Localization
 local Utils = COM.Utils
-local Dialog = COM.Dialog
 
 local Options = {}
 
@@ -136,7 +135,7 @@ function Options:Initialize()
 		local buttonText = L["options.about.button-github.button"]
 
         local function OnButtonClick()
-            Dialog:ShowCopyAddressDialog(COM.LINK_GITHUB)
+            WAD.Dialog:ShowCopyAddressDialog(COM.LINK_GITHUB)
         end
 
         local buttonInitializer = CreateSettingsButtonInitializer(name, buttonText, OnButtonClick, tooltip, true)

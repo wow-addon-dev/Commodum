@@ -7,6 +7,8 @@
 ## LoadOnDemand: 0
 ## DefaultState: enabled
 
+## Dependencies: WoWAddonDevelopmentLibraries
+
 ## Notes: xxx
 ## Notes-deDE: xxx
 
