@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build WoW Addon Commodum",
+      "label": "Build WoW Addon - Commodum",
       "type": "shell",
       "command": "pwsh",
       "args": [

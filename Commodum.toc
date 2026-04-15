@@ -3,12 +3,12 @@
 ## Author: diomsg (Diom-Antonidas EU)
 
 ## Version: @project-version@
-## IconTexture: Interface\AddOns\Commodum\media\icon.blp
+## IconTexture: Interface\AddOns\Commodum\assets\icon.blp
 ## LoadOnDemand: 0
 ## DefaultState: enabled
 
-## Dependencies: WoWAddonDevelopmentLibraries
-
+## Dependencies: ArcaneWizardLibrary
+s
 ## Notes: xxx
 ## Notes-deDE: xxx
 

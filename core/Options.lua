@@ -3,6 +3,8 @@ local addonName, COM = ...
 local L = COM.Localization
 local Utils = COM.Utils
 
+local AWL = ArcaneWizardLibrary
+
 local Options = {}
 
 ----------------------
@@ -97,10 +99,10 @@ function Options:Initialize()
 	do
 		local data = {
 			leftText = L["options.about.game-version"],
-			rightText = COM.GAME_VERSION .. " (" .. COM.GAME_FLAVOR .. ")",
+			rightText = COM.GAME_VERSION .. " (" .. COM.GAME_FLAVOR .. ")"
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("Commodum_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
 
 		function text:GetExtent()
 			return 14
@@ -113,7 +115,7 @@ function Options:Initialize()
 			rightText = COM.ADDON_VERSION .. " (" .. COM.ADDON_BUILD_DATE .. ")"
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("Commodum_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
 
 		function text:GetExtent()
 			return 14
@@ -126,7 +128,7 @@ function Options:Initialize()
 			rightText = COM.ADDON_AUTHOR
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("Commodum_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
 	end
 
 	do
@@ -135,7 +137,7 @@ function Options:Initialize()
 		local buttonText = L["options.about.button-github.button"]
 
         local function OnButtonClick()
-            WAD.Dialog:ShowCopyAddressDialog(COM.LINK_GITHUB)
+            AWL.Dialog:ShowCopyAddressDialog(COM.LINK_GITHUB)
         end
 
         local buttonInitializer = CreateSettingsButtonInitializer(name, buttonText, OnButtonClick, tooltip, true)
