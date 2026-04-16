@@ -102,7 +102,7 @@ function Options:Initialize()
 			rightText = COM.GAME_VERSION .. " (" .. COM.GAME_FLAVOR .. ")"
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsMenuText", data))
 
 		function text:GetExtent()
 			return 14
@@ -115,7 +115,7 @@ function Options:Initialize()
 			rightText = COM.ADDON_VERSION .. " (" .. COM.ADDON_BUILD_DATE .. ")"
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsMenuText", data))
 
 		function text:GetExtent()
 			return 14
@@ -128,7 +128,7 @@ function Options:Initialize()
 			rightText = COM.ADDON_AUTHOR
 		}
 
-		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsText", data))
+		local text = layout:AddInitializer(Settings.CreateElementInitializer("ArcaneWizardLibrary_OptionsMenuText", data))
 	end
 
 	do
@@ -137,7 +137,7 @@ function Options:Initialize()
 		local buttonText = L["options.about.button-github.button"]
 
         local function OnButtonClick()
-            AWL.Dialog:ShowCopyAddressDialog(COM.LINK_GITHUB)
+            AWL.Dialog:ShowLinkDialog(COM.LINK_GITHUB)
         end
 
         local buttonInitializer = CreateSettingsButtonInitializer(name, buttonText, OnButtonClick, tooltip, true)

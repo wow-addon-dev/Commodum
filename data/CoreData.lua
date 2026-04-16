@@ -8,7 +8,6 @@ COM.GAME_VERSION = GetBuildInfo()
 
 COM.LINK_GITHUB = C_AddOns.GetAddOnMetadata(addonName, "X-Github")
 COM.LINK_CURSEFORGE = C_AddOns.GetAddOnMetadata(addonName, "X-Curseforge")
-COM.LINK_WAGO = C_AddOns.GetAddOnMetadata(addonName, "X-Wago")
 
 COM.MEDIA_PATH = "Interface\\AddOns\\" .. addonName .. "\\assets\\"
 
