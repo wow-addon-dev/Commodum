@@ -1,5 +1,7 @@
 local addonName, COM = ...
 
+local L = COM.Localization
+
 local Utils = {}
 
 ---------------------
@@ -36,7 +38,25 @@ function Utils:InitializeDatabase()
 end
 
 function Utils:InitializeMinimapButton()
+    local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("Commodum", {
+        type     = "launcher",
+        text     = "Commodum",
+        icon     = COM.MEDIA_PATH .. "icon-round.blp",
+        OnClick  = function(self, button)
+            if button == "RightButton" then
+                Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
+            end
+        end,
+        OnTooltipShow = function(tooltip)
+			GameTooltip_SetTitle(tooltip, addonName)
+			GameTooltip_AddNormalLine(tooltip, COM.ADDON_VERSION .. " (" .. COM.ADDON_BUILD_DATE .. ")")
+			GameTooltip_AddBlankLineToTooltip(tooltip)
+			GameTooltip_AddHighlightLine(tooltip, L["minimap-button.tooltip"])
+        end,
+    })
 
+    self.minimapButton = LibStub("LibDBIcon-1.0")
+    self.minimapButton:Register("Commodum", LDB, COM.options.general["minimap-button"])
 end
 
 COM.Utils = Utils
