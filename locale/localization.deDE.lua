@@ -35,3 +35,7 @@ L["options.about.button-github.button"] = "GitHub"
 -- General
 
 L["minimap-button.tooltip"] = "|cnLINK_FONT_COLOR:Rechtsklick|r zum Öffnen der Einstellungen."
+
+-- Chat
+
+-- Quality of Life
