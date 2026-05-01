@@ -44,7 +44,11 @@ function Utils:InitializeMinimapButton()
         icon     = COM.MEDIA_PATH .. "icon-round.blp",
         OnClick  = function(self, button)
             if button == "RightButton" then
-                Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
+				if not InCombatLockdown() then
+					Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
+				else
+					Utils:PrintDebug("In combat. The options menu cannot be opened.")
+				end
             end
         end,
         OnTooltipShow = function(tooltip)

@@ -2,6 +2,8 @@ local addonName, COM = ...
 
 local L = COM.Localization
 
+local Utils = COM.Utils
+
 ---------------------
 --- Main Funtions ---
 ---------------------
@@ -25,7 +27,11 @@ end
 function Commodum_CompartmentOnClick(_, button)
     if button == "LeftButton" then
 		if button == "RightButton" then
-        	Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
+			if not InCombatLockdown() then
+				Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
+			else
+				Utils:PrintDebug("In combat. The options menu cannot be opened.")
+			end
 		end
     end
 end
