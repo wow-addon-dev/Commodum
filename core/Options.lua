@@ -94,26 +94,28 @@ function Options:Initialize()
     -- Game Version
     AWL.Settings:AddInfoText(layout, {
         leftText  = L["options.about.game-version"],
-        rightText = COM.GAME_VERSION .. " (" .. COM.GAME_FLAVOR .. ")"
+        rightText = COM.GAME_VERSION .. " (" .. COM.GAME_FLAVOR .. ")",
+        height    = "compact"
     })
 
     -- Addon Version
     AWL.Settings:AddInfoText(layout, {
         leftText  = L["options.about.addon-version"],
-        rightText = COM.ADDON_VERSION .. " (" .. COM.ADDON_BUILD_DATE .. ")"
+        rightText = COM.ADDON_VERSION .. " (" .. COM.ADDON_BUILD_DATE .. ")",
+        height    = "compact"
     })
 
     -- Library Version
     AWL.Settings:AddInfoText(layout, {
         leftText  = L["options.about.lib-version"],
-        rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")"
+        rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")",
+        height    = "compact"
     })
 
     -- Author
     AWL.Settings:AddInfoText(layout, {
         leftText  = L["options.about.author"],
-        rightText = COM.ADDON_AUTHOR,
-        height    = 30
+        rightText = COM.ADDON_AUTHOR
     })
 
     -- GitHub Link
