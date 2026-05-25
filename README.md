@@ -1,1 +1,36 @@
 # Commodum
+
+[![GitHub Release](https://img.shields.io/github/v/release/wow-addon-dev/Commodum?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Commodum/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/wow-addon-dev/Commodum?color=blue&logo=github&cacheSeconds=600)](https://github.com/wow-addon-dev/Commodum/releases) [![Static Badge](https://img.shields.io/badge/buy_me_a_coffee-donate-yellow?logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/diomsg)
+
+_Smooth out the little things._
+
+Commodum is a World of Warcraft addon that adds small quality-of-life conveniences to everyday play.
+
+**Key Feature**
+
+* **Quality of Life Tweaks** - Keeps the in-game clock in 24-hour format and automatically watches the faction whose reputation changed.
+
+## Features
+
+* Uses the 24-hour clock for the in-game time display (optional).
+* Automatically sets the faction whose reputation changed as the watched faction (optional).
+* Supports an account profile and character profiles.
+
+## Supported Languages & Flavors
+
+* Languages: English, German
+* Flavors: Retail
+
+## Installation & Quick Start
+
+> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Expositum via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
+
+To open the addon options menu, type `/com` or `/commodum` into your chat and press enter.
+
+## Bugs & Feedback
+
+If you find a bug or have a suggestion, please use the GitHub Issues or the CurseForge comments.
+
+## Translation Support
+
+If you would like to localize this addon into other languages, your contribution would be very welcome. You can submit your translations directly via GitHub or use the [CurseForge Localization Tool](https://legacy.curseforge.com/wow/addons/commodum/localization).

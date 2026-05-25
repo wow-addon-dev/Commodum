@@ -1,17 +1,17 @@
 local addonName, COM = ...
 
-local Options = COM.Options
-local Utils = COM.Utils
+local Options = COM.modules.Options
+local Utils = COM.modules.Utils
 
 --------------
 --- Frames ---
 --------------
 
-local commodumFrame = CreateFrame("Frame", "Commodum")
+local CommodumFrame = CreateFrame("Frame", "Commodum")
 
-----------------------
---- Local Funtions ---
-----------------------
+-----------------------
+--- Local Functions ---
+-----------------------
 
 local function SlashCommand(msg, editbox)
 	if not msg or strtrim(msg) == "" then
@@ -25,41 +25,49 @@ local function SlashCommand(msg, editbox)
 	end
 end
 
----------------------
---- Main Funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
-function commodumFrame:OnEvent(event, ...)
+function CommodumFrame:OnEvent(event, ...)
 	self[event](self, event, ...)
 end
 
-function commodumFrame:ADDON_LOADED(_, addOnName)
+function CommodumFrame:ADDON_LOADED(_, addOnName)
 	if addOnName == addonName then
 		Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
 
+		Utils:OpenSettingsOnLoading()
+
 		Utils:PrintDebug("Addon fully loaded.")
 	end
 end
 
-function commodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
-	Utils:PrintDebug("Event 'PLAYER_ENTERING_WORLD' fired. Payload: isInitialLogin=" .. tostring(isInitialLogin) .. ", isReloadingUi=" .. tostring(isReloadingUi))
+function CommodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
+	Utils:PrintDebug(string.format(
+		"Event 'PLAYER_ENTERING_WORLD' fired. Payload: isInitialLogin=%s, isReloadingUi=%s",
+		tostring(isInitialLogin), tostring(isReloadingUi)
+	))
 
-	SetCVar("timeMgrUseMilitaryTime", 1)
+	Utils:ApplyMilitaryTimeSetting()
 end
 
-function commodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
-	Utils:PrintDebug("Event 'FACTION_STANDING_CHANGED' fired. Payload: factionID=" .. tostring(factionID) .. ", updatedStanding=" .. tostring(updatedStanding))
+function CommodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
+	Utils:PrintDebug(string.format(
+		"Event 'FACTION_STANDING_CHANGED' fired. Payload: factionID=%s, updatedStanding=%s",
+		tostring(factionID), tostring(updatedStanding)
+	))
 
-	C_Reputation.SetWatchedFactionByID(factionID)
+	Utils:WatchFaction(factionID)
 end
 
-commodumFrame:RegisterEvent("ADDON_LOADED")
-commodumFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-commodumFrame:RegisterEvent("FACTION_STANDING_CHANGED")
-commodumFrame:SetScript("OnEvent", commodumFrame.OnEvent)
+CommodumFrame:RegisterEvent("ADDON_LOADED")
+CommodumFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+CommodumFrame:RegisterEvent("FACTION_STANDING_CHANGED")
+CommodumFrame:SetScript("OnEvent", CommodumFrame.OnEvent)
 
-SLASH_Horatum1, SLASH_Horatum2 = '/com', '/commodum'
+SLASH_Commodum1, SLASH_Commodum2 = '/com', '/commodum'
 
 SlashCmdList["Commodum"] = SlashCommand

@@ -9,11 +9,11 @@
 
 ## Dependencies: ArcaneWizardLibrary
 
-## Notes: xxx
-## Notes-deDE: xxx
+## Notes: Adds small quality-of-life conveniences for World of Warcraft.
+## Notes-deDE: Ergänzt kleine Komfortfunktionen für World of Warcraft.
 
 ## LoadSavedVariablesFirst: 1
-## SavedVariables: Commodum_Options
+## SavedVariables: Commodum_Options_v2
 
 ## AddonCompartmentFuncOnEnter: Commodum_CompartmentOnEnter
 ## AddonCompartmentFuncOnLeave: Commodum_CompartmentOnLeave

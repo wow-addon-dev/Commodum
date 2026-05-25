@@ -2,11 +2,11 @@ local addonName, COM = ...
 
 local L = COM.Localization
 
-local Utils = COM.Utils
+local Utils = COM.modules.Utils
 
----------------------
---- Main Funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
 function Commodum_CompartmentOnEnter(self, button)
 	GameTooltip:ClearAllPoints()
@@ -25,13 +25,11 @@ function Commodum_CompartmentOnLeave()
 end
 
 function Commodum_CompartmentOnClick(_, button)
-	if button == "LeftButton" then
-		if button == "RightButton" then
-			if not InCombatLockdown() then
-				Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
-			else
-				Utils:PrintDebug("In combat. The options menu cannot be opened.")
-			end
+	if button == "RightButton" then
+		if not InCombatLockdown() then
+			Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
+		else
+			Utils:PrintDebug("In combat. The options menu cannot be opened.")
 		end
 	end
 end

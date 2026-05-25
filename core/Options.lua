@@ -1,20 +1,20 @@
 local addonName, COM = ...
 
 local L = COM.Localization
-local Utils = COM.Utils
+local Utils = COM.modules.Utils
 
 local AWL = ArcaneWizardLibrary
 
 local Options = {}
 
-----------------------
---- Local Funtions ---
-----------------------
+-----------------------
+--- Local Functions ---
+-----------------------
 
 local minimapButtonProxy = setmetatable({}, {
 	__index = function(_, key)
 		if key == "hide" then
-			return not COM.options.general["minimap-button"]["hide"]
+			return not COM.settings.general["minimap-button"]["hide"]
 		end
 	end,
 	__newindex = function(_, key, value)
@@ -22,7 +22,7 @@ local minimapButtonProxy = setmetatable({}, {
 			return
 		end
 
-		COM.options.general["minimap-button"]["hide"] = not value
+		COM.settings.general["minimap-button"]["hide"] = not value
 
 		if value then
 			Utils.minimapButton:Show("Commodum")
@@ -32,26 +32,16 @@ local minimapButtonProxy = setmetatable({}, {
 	end,
 })
 
----------------------
---- Main Funtions ---
----------------------
+------------------------
+--- Public Functions ---
+------------------------
 
 function Options:Initialize()
 	local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
 
-	-- Notification
-	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.options.general,
-		settingKey    = addonName .. "_notification",
-		variableName  = "notification",
-		name          = L["options.general.notification.name"],
-		tooltip       = L["options.general.notification.tooltip"],
-		default       = true
-	})
-
-	-- Minimap Button Visibility
+	-- Minimap Button
 	AWL.Settings:AddCheckbox(category, {
 		variableTable = minimapButtonProxy,
 		settingKey    = addonName .. "_hide",
@@ -61,21 +51,32 @@ function Options:Initialize()
 		default       = true
 	})
 
+	-- Debug Mode
+	AWL.Settings:AddCheckbox(category, {
+		variableTable = COM.settings.general,
+		settingKey    = addonName .. "_debug-mode",
+		variableName  = "debug-mode",
+		name          = L["options.general.debug-mode.name"],
+		tooltip       = L["options.general.debug-mode.tooltip"],
+		default       = false
+	})
+
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.quality-of-life"]))
 
 	-- Military Time
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.options.qualityOfLife,
+		variableTable = COM.settings.qualityOfLife,
 		settingKey    = addonName .. "_military-time",
 		variableName  = "military-time",
 		name          = L["options.quality-of-life.military-time.name"],
 		tooltip       = L["options.quality-of-life.military-time.tooltip"],
-		default       = true
+		default       = true,
+		onClick       = function() Utils:ApplyMilitaryTimeSetting() end
 	})
 
 	-- Watched Faction
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.options.qualityOfLife,
+		variableTable = COM.settings.qualityOfLife,
 		settingKey    = addonName .. "_watched-faction",
 		variableName  = "watched-faction",
 		name          = L["options.quality-of-life.watched-faction.name"],
@@ -83,59 +84,32 @@ function Options:Initialize()
 		default       = true
 	})
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.other"]))
-
-	-- Debug Mode
-	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.options.other,
-		settingKey    = addonName .. "_debug-mode",
-		variableName  = "debug-mode",
-		name          = L["options.other.debug-mode.name"],
-		tooltip       = L["options.other.debug-mode.tooltip"],
-		default       = false
+	-- Profiles Section
+	AWL.Settings:AddProfilesSection(layout, {
+		useAccountProfile = Utils:IsAccountProfile(),
+		onSwitchProfile = function()
+			Utils:ToggleProfileMode()
+			ReloadUI()
+		end,
+		onDeleteCharacterProfiles = function()
+			Utils:ResetAllCharacterProfiles()
+			ReloadUI()
+		end
 	})
 
-	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.about"]))
-
-	-- Game Version
-	AWL.Settings:AddInfoText(layout, {
-		leftText  = L["options.about.game-version"],
-		rightText = COM.GAME_VERSION .. " (" .. COM.GAME_FLAVOR .. ")",
-		height    = "compact"
+	-- About Section
+	AWL.Settings:AddAboutSection(layout, {
+		gameVersion    = COM.GAME_VERSION,
+		gameFlavor     = COM.GAME_FLAVOR,
+		addonVersion   = COM.ADDON_VERSION,
+		addonBuildDate = COM.ADDON_BUILD_DATE,
+		addonAuthor    = COM.ADDON_AUTHOR,
+		githubLink     = COM.LINK_GITHUB
 	})
-
-	-- Addon Version
-	AWL.Settings:AddInfoText(layout, {
-		leftText  = L["options.about.addon-version"],
-		rightText = COM.ADDON_VERSION .. " (" .. COM.ADDON_BUILD_DATE .. ")",
-		height    = "compact"
-	})
-
-	-- Library Version
-	AWL.Settings:AddInfoText(layout, {
-		leftText  = L["options.about.lib-version"],
-		rightText = AWL.ADDON_VERSION .. " (" .. AWL.ADDON_BUILD_DATE .. ")",
-		height    = "compact"
-	})
-
-	-- Author
-	AWL.Settings:AddInfoText(layout, {
-		leftText  = L["options.about.author"],
-		rightText = COM.ADDON_AUTHOR
-	})
-
-	-- GitHub Link
-	AWL.Settings:AddButton(layout, {
-		name       = L["options.about.button-github.name"],
-		buttonText = L["options.about.button-github.button"],
-		tooltip    = L["options.about.button-github.tooltip"],
-		onClick    = function() AWL.Dialogs:ShowLinkDialog(COM.LINK_GITHUB) end
-	})
-
 
 	Settings.RegisterAddOnCategory(category)
 
 	COM.MAIN_CATEGORY_ID = category:GetID()
 end
 
-COM.Options = Options
+COM.modules.Options = Options

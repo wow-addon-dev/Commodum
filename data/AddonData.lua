@@ -24,7 +24,7 @@ if COM.GAME_TYPE_VANILLA then
 elseif COM.GAME_TYPE_TBC then
 	COM.GAME_FLAVOR = "Burning Crusade - Classic Anniversary Edition"
 elseif COM.GAME_TYPE_MISTS then
-	COM.GAME_FLAVOR = "Mist of Pandaria - Classic"
+	COM.GAME_FLAVOR = "Mists of Pandaria - Classic"
 elseif COM.GAME_TYPE_MAINLINE then
 	COM.GAME_FLAVOR = "Retail"
 end

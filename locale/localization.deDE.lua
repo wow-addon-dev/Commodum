@@ -1,4 +1,4 @@
-local addonname, COM = ...
+local _, COM = ...
 
 if GetLocale() ~= "deDE" then return end
 
@@ -7,30 +7,16 @@ local L = COM.Localization
 -- Options
 
 L["options.general"] = "Allgemeine Einstellungen"
-L["options.general.notification.name"] = "Chatbenachrichtigung"
-L["options.general.notification.tooltip"] = "Aktiviere oder deaktiviere die Benachrichtung im Chat."
-L["options.general.minimap-button.name"] = "Minimap Button"
-L["options.general.minimap-button.tooltip"] = "Bei Aktivierung wird der Minimap Button angezeigt."
+L["options.general.minimap-button.name"] = "Minimap-Button"
+L["options.general.minimap-button.tooltip"] = "Bei Aktivierung wird der Minimap-Button angezeigt."
+L["options.general.debug-mode.name"] = "Debugmodus"
+L["options.general.debug-mode.tooltip"] = "Die Aktivierung des Debugmodus zeigt zusätzliche Informationen im Chat an."
 
-L["options.quality-of-life"] = "Quality of Life"
-L["options.quality-of-life.military-time.name"] = "military-time"
-L["options.quality-of-life.military-time.tooltip"] = "military-time"
-L["options.quality-of-life.watched-faction.name"] = "watched-faction"
-L["options.quality-of-life.watched-faction.tooltip"] = "watched-faction"
-
-L["options.other"] = "Sonstige Einstellungen"
-L["options.other.debug-mode.name"] = "Debugmodus"
-L["options.other.debug-mode.tooltip"] = "Die Aktivierung des Debugmodus zeigt zusätzliche Informationen im Chat an."
-
-L["options.about"] = "Über"
-L["options.about.game-version"] = "Spielversion"
-L["options.about.addon-version"] = "Addonversion"
-L["options.about.lib-version"] = "Bibliotheksversion"
-L["options.about.author"] = "Autor"
-
-L["options.about.button-github.name"] = "Feedback & Hilfe"
-L["options.about.button-github.tooltip"] = "Öffnet ein Popup-Fenster mit einem Link zu GitHub."
-L["options.about.button-github.button"] = "GitHub"
+L["options.quality-of-life"] = "Komfortfunktionen"
+L["options.quality-of-life.military-time.name"] = "24-Stunden-Uhr verwenden"
+L["options.quality-of-life.military-time.tooltip"] = "Verwendet die 24-Stunden-Anzeige für die Spielzeituhr."
+L["options.quality-of-life.watched-faction.name"] = "Ruffraktion automatisch beobachten"
+L["options.quality-of-life.watched-faction.tooltip"] = "Setzt die Fraktion, deren Ruf sich geändert hat, automatisch als beobachtete Fraktion."
 
 -- General
 
