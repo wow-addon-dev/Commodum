@@ -14,7 +14,7 @@ local Options = {}
 local minimapButtonProxy = setmetatable({}, {
     __index = function(_, key)
 		if key == "hide" then
-			return not COM.settings.general["minimap-button"]["hide"]
+			return not COM.options.general["minimap-button"]["hide"]
 		end
     end,
     __newindex = function(_, key, value)
@@ -22,7 +22,7 @@ local minimapButtonProxy = setmetatable({}, {
 			return
 		end
 
-        COM.settings.general["minimap-button"]["hide"] = not value
+        COM.options.general["minimap-button"]["hide"] = not value
 
         if value then
             Utils.minimapButton:Show("Commodum")
