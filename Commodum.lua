@@ -1,7 +1,7 @@
 local addonName, COM = ...
 
-local Utils = COM.Utils
 local Options = COM.Options
+local Utils = COM.Utils
 
 --------------
 --- Frames ---
