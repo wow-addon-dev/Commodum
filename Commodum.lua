@@ -14,14 +14,14 @@ local commodumFrame = CreateFrame("Frame", "Commodum")
 ----------------------
 
 local function SlashCommand(msg, editbox)
-    if not msg or msg:trim() == "" then
+	if not msg or strtrim(msg) == "" then
 		if not InCombatLockdown() then
 			Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
 		else
 			Utils:PrintDebug("In combat. The options menu cannot be opened.")
 		end
 	else
-        Utils:PrintDebug("These arguments are not accepted.")
+		Utils:PrintDebug("These arguments are not accepted.")
 	end
 end
 
@@ -34,13 +34,13 @@ function commodumFrame:OnEvent(event, ...)
 end
 
 function commodumFrame:ADDON_LOADED(_, addOnName)
-    if addOnName == addonName then
+	if addOnName == addonName then
 		Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
 
 		Utils:PrintDebug("Addon fully loaded.")
-    end
+	end
 end
 
 function commodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)

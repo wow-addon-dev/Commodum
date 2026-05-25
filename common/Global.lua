@@ -21,11 +21,11 @@ function Commodum_CompartmentOnEnter(self, button)
 end
 
 function Commodum_CompartmentOnLeave()
-    GameTooltip:Hide()
+	GameTooltip:Hide()
 end
 
 function Commodum_CompartmentOnClick(_, button)
-    if button == "LeftButton" then
+	if button == "LeftButton" then
 		if button == "RightButton" then
 			if not InCombatLockdown() then
 				Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
@@ -33,5 +33,5 @@ function Commodum_CompartmentOnClick(_, button)
 				Utils:PrintDebug("In combat. The options menu cannot be opened.")
 			end
 		end
-    end
+	end
 end

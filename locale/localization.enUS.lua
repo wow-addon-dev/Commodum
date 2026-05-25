@@ -1,8 +1,8 @@
 local addonname, COM = ...
 
 COM.Localization = setmetatable({},{__index=function(self,key)
-    geterrorhandler()("Horatum (Debug): Missing entry for '" .. tostring(key) .. "'")
-    return key
+	geterrorhandler()("Horatum (Debug): Missing entry for '" .. tostring(key) .. "'")
+	return key
 end})
 
 local L = COM.Localization
