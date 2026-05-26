@@ -33,9 +33,7 @@ end
 ------------------------
 
 function Utils:PrintDebug(msg)
-	local generalSettings = COM.settings and COM.settings.general
-
-	if generalSettings and generalSettings["debug-mode"] then
+	if COM.settings.general["debug-mode"] then
 		DEFAULT_CHAT_FRAME:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ")  .. msg)
 	end
 end

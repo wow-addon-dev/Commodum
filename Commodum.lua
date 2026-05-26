@@ -21,7 +21,7 @@ local function SlashCommand(msg, editbox)
 			Utils:PrintDebug("In combat. The options menu cannot be opened.")
 		end
 	else
-		Utils:PrintDebug("These arguments are not accepted.")
+		Utils:PrintDebug("No arguments will be accepted.")
 	end
 end
 
