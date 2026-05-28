@@ -34,7 +34,7 @@ end
 
 function Utils:PrintDebug(msg)
 	if COM.settings.general["debug-mode"] then
-		DEFAULT_CHAT_FRAME:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ")  .. msg)
+		DEFAULT_CHAT_FRAME:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ") .. msg)
 	end
 end
 
