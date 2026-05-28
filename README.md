@@ -12,8 +12,9 @@ Commodum is a World of Warcraft addon that adds small quality-of-life convenienc
 
 ## Features
 
-* Uses the 24-hour clock for the in-game time display (optional).
-* Automatically sets the faction whose reputation changed as the watched faction (optional).
+* Uses the 24-hour clock for the in-game time display.
+* Automatically sets the faction whose reputation changed as the watched faction.
+* All features can be activated or deactivated separately.
 * Supports an account profile and character profiles.
 
 ## Supported Languages & Flavors

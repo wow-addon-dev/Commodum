@@ -33,7 +33,9 @@ end
 ------------------------
 
 function Utils:PrintDebug(msg)
-	if COM.settings.general["debug-mode"] then
+	local debugMode = COM.settings and COM.settings.general	and COM.settings.general["debug-mode"]
+
+	if debugMode ~= false then
 		DEFAULT_CHAT_FRAME:AddMessage(ORANGE_FONT_COLOR:WrapTextInColorCode(addonName .. " (Debug): ") .. msg)
 	end
 end
@@ -80,6 +82,12 @@ end
 
 function Utils:InitializeDatabase()
 	local characterRealmKey = GetCharacterRealmKey()
+
+	local hadDb = Commodum_Options_v2 ~= nil
+	local createdDb = false
+	local createdProfile = false
+	local createdProfileKey = false
+
 	local defaults = {
 		["general"] = {
 			["minimap-button"] = {
@@ -95,18 +103,12 @@ function Utils:InitializeDatabase()
 			["profiles"] = {},
 			["profileKeys"] = {}
 		}
-	end
-
-	if not Commodum_Options_v2 then
-		Commodum_Options_v2 = {
-			["account"] = CopyTable(defaults),
-			["profiles"] = {},
-			["profileKeys"] = {}
-		}
+		createdDb = true
 	end
 
 	if not Commodum_Options_v2.profiles[characterRealmKey] then
 		Commodum_Options_v2.profiles[characterRealmKey] = CopyTable(defaults)
+		createdProfile = true
 	end
 
 	if not Commodum_Options_v2.profileKeys[characterRealmKey] then
@@ -114,15 +116,23 @@ function Utils:InitializeDatabase()
 			["use-account"] = true,
 			["open-settings"] = false
 		}
+		createdProfileKey = true
 	end
 
-	if Commodum_Options_v2.profileKeys[characterRealmKey]["use-account"] then
+	local useAccountProfile = Commodum_Options_v2.profileKeys[characterRealmKey]["use-account"]
+
+	if useAccountProfile then
 		COM.settings.general = Commodum_Options_v2.account["general"]
 		COM.settings.qualityOfLife = Commodum_Options_v2.account["quality-of-life"]
 	else
 		COM.settings.general = Commodum_Options_v2.profiles[characterRealmKey]["general"]
 		COM.settings.qualityOfLife = Commodum_Options_v2.profiles[characterRealmKey]["quality-of-life"]
 	end
+
+	self:PrintDebug(string.format(
+		"InitializeDatabase: key=%s, hadDb=%s, createdDb=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
+		characterRealmKey, tostring(hadDb), tostring(createdDb), tostring(createdProfile), tostring(createdProfileKey),	useAccountProfile and "account" or "character"
+	))
 end
 
 function Utils:InitializeMinimapButton()
