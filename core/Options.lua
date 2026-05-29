@@ -1,6 +1,8 @@
 local addonName, COM = ...
 
 local L = COM.Localization
+
+local QualityOfLife = COM.modules.QualityOfLife
 local Utils = COM.modules.Utils
 
 local AWL = ArcaneWizardLibrary
@@ -71,7 +73,7 @@ function Options:Initialize()
 		name          = L["options.quality-of-life.military-time.name"],
 		tooltip       = L["options.quality-of-life.military-time.tooltip"],
 		default       = true,
-		onClick       = function() Utils:ApplyMilitaryTimeSetting() end
+		onClick       = function() QualityOfLife:ApplyMilitaryTimeSetting() end
 	})
 
 	-- Watched Faction

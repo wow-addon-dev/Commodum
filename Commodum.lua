@@ -1,6 +1,7 @@
 local addonName, COM = ...
 
 local Options = COM.modules.Options
+local QualityOfLife = COM.modules.QualityOfLife
 local Utils = COM.modules.Utils
 
 --------------
@@ -35,12 +36,16 @@ end
 
 function CommodumFrame:ADDON_LOADED(_, addOnName)
 	if addOnName == addonName then
-		Utils:InitializeDatabase()
+		local dbInit = Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
 
 		Utils:OpenSettingsOnLoading()
 
+		Utils:PrintDebug(string.format(
+			"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
+			tostring(dbInit.characterRealmKey), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
+		))
 		Utils:PrintDebug("Addon fully loaded.")
 	end
 end
@@ -51,7 +56,7 @@ function CommodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
 		tostring(isInitialLogin), tostring(isReloadingUi)
 	))
 
-	Utils:ApplyMilitaryTimeSetting()
+	QualityOfLife:ApplyMilitaryTimeSetting()
 end
 
 function CommodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
@@ -60,7 +65,7 @@ function CommodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
 		tostring(factionID), tostring(updatedStanding)
 	))
 
-	Utils:WatchFaction(factionID)
+	QualityOfLife:WatchFaction(factionID)
 end
 
 CommodumFrame:RegisterEvent("ADDON_LOADED")
