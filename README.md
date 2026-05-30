@@ -4,7 +4,7 @@
 
 _Smooth out the little things._
 
-Commodum is a World of Warcraft addon that adds small quality-of-life conveniences to everyday play.
+Commodum is a World of Warcraft addon that adds a few quality-of-life improvements to everyday gameplay.
 
 **Key Feature**
 

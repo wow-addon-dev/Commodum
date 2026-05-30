@@ -9,8 +9,8 @@
 
 ## Dependencies: ArcaneWizardLibrary
 
-## Notes: Adds small quality-of-life conveniences for World of Warcraft.
-## Notes-deDE: Ergänzt kleine Komfortfunktionen für World of Warcraft.
+## Notes: This addon adds a few quality-of-life improvements to everyday gameplay.
+## Notes-deDE: Dieses Addon bringt ein paar Komfortverbesserungen für den Spielalltag.
 
 ## LoadSavedVariablesFirst: 1
 ## SavedVariables: Commodum_Options_v2
