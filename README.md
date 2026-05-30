@@ -8,11 +8,11 @@ Commodum is a World of Warcraft addon that adds small quality-of-life convenienc
 
 **Key Feature**
 
-* **Quality of Life Tweaks** - Keeps the in-game clock in 24-hour format and automatically watches the faction whose reputation changed.
+* **Quality of Life Tweaks** - Adds lightweight, optional convenience improvements to the default interface for smoother everyday gameplay.
 
 ## Features
 
-* Uses the 24-hour clock for the in-game time display.
+* Uses the 24-hour clock for the in-game time display and automatically reapplies the setting after login/UI reload to work around a known Blizzard UI issue.
 * Automatically sets the faction whose reputation changed as the watched faction.
 * All features can be activated or deactivated separately.
 * Supports an account profile and character profiles.
