@@ -1,5 +1,8 @@
 local addonName, COM = ...
 
+local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
 local Options = COM.modules.Options
 local QualityOfLife = COM.modules.QualityOfLife
 local Utils = COM.modules.Utils
@@ -16,11 +19,7 @@ local CommodumFrame = CreateFrame("Frame", "Commodum")
 
 local function SlashCommand(msg, editbox)
 	if not msg or strtrim(msg) == "" then
-		if not InCombatLockdown() then
-			Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
-		else
-			Utils:PrintDebug("In combat. The options menu cannot be opened.")
-		end
+		Addon:OpenCategory()
 	else
 		Utils:PrintDebug("No arguments will be accepted.")
 	end

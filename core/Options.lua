@@ -6,6 +6,7 @@ local QualityOfLife = COM.modules.QualityOfLife
 local Utils = COM.modules.Utils
 
 local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
 
 local Options = {}
 
@@ -100,17 +101,11 @@ function Options:Initialize()
 	})
 
 	-- About Section
-	AWL.Settings:AddAboutSection(layout, {
-		addonVersion   = COM.ADDON_VERSION,
-		addonBuildDate = COM.ADDON_BUILD_DATE,
-		addonAuthor    = COM.ADDON_AUTHOR,
-		curseforgeLink = COM.LINK_CURSEFORGE,
-		githubLink     = COM.LINK_GITHUB
-	})
+	AWL.Settings:AddAboutSection(layout, addonName)
 
 	Settings.RegisterAddOnCategory(category)
 
-	COM.MAIN_CATEGORY_ID = category:GetID()
+	Addon:SetMainCategoryId(category:GetID())
 end
 
 COM.modules.Options = Options

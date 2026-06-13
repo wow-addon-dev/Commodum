@@ -2,34 +2,25 @@ local addonName, COM = ...
 
 local L = COM.Localization
 
-local Utils = COM.modules.Utils
+local AWL = ArcaneWizardLibrary
+local Addon = AWL:GetAddon(addonName)
+
+local compartmentHandlers = Addon:CreateCompartmentHandlers({
+	tooltip = L["minimap-button.tooltip"]
+})
 
 ------------------------
 --- Public Functions ---
 ------------------------
 
 function Commodum_CompartmentOnEnter(self, button)
-	GameTooltip:ClearAllPoints()
-	GameTooltip:SetOwner(button, "ANCHOR_LEFT")
-
-	GameTooltip_SetTitle(GameTooltip, addonName)
-	GameTooltip_AddNormalLine(GameTooltip, COM.ADDON_VERSION .. " (" .. COM.ADDON_BUILD_DATE .. ")")
-	GameTooltip_AddBlankLineToTooltip(GameTooltip)
-	GameTooltip_AddHighlightLine(GameTooltip, L["minimap-button.tooltip"])
-
-	GameTooltip:Show()
+	compartmentHandlers.OnEnter(self, button)
 end
 
 function Commodum_CompartmentOnLeave()
-	GameTooltip:Hide()
+	compartmentHandlers.OnLeave()
 end
 
-function Commodum_CompartmentOnClick(_, button)
-	if button == "RightButton" then
-		if not InCombatLockdown() then
-			Settings.OpenToCategory(COM.MAIN_CATEGORY_ID)
-		else
-			Utils:PrintDebug("In combat. The options menu cannot be opened.")
-		end
-	end
+function Commodum_CompartmentOnClick(self, button)
+	compartmentHandlers.OnClick(self, button)
 end
