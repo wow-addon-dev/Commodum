@@ -1,12 +1,11 @@
 local addonName, COM = ...
 
-local L = COM.Localization
-
-local QualityOfLife = COM.modules.QualityOfLife
-local Utils = COM.modules.Utils
-
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
+
+local L = COM.Localization
+local QualityOfLife = COM.modules.QualityOfLife
+local Utils = COM.modules.Utils
 
 local Options = {}
 
