@@ -3,9 +3,9 @@ local addonName, COM = ...
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
-local Options = COM.modules.Options
-local QualityOfLife = COM.modules.QualityOfLife
-local Utils = COM.modules.Utils
+local Options = COM.Modules.Options
+local QualityOfLife = COM.Modules.QualityOfLife
+local Utils = COM.Modules.Utils
 
 --------------
 --- Frames ---

@@ -4,8 +4,8 @@ local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
 local L = COM.Localization
-local QualityOfLife = COM.modules.QualityOfLife
-local Utils = COM.modules.Utils
+local QualityOfLife = COM.Modules.QualityOfLife
+local Utils = COM.Modules.Utils
 
 local Options = {}
 
@@ -16,7 +16,7 @@ local Options = {}
 local minimapButtonProxy = setmetatable({}, {
 	__index = function(_, key)
 		if key == "hide" then
-			return not COM.settings.general["minimap-button"]["hide"]
+			return not COM.Settings.general["minimap-button"]["hide"]
 		end
 	end,
 	__newindex = function(_, key, value)
@@ -24,7 +24,7 @@ local minimapButtonProxy = setmetatable({}, {
 			return
 		end
 
-		COM.settings.general["minimap-button"]["hide"] = not value
+		COM.Settings.general["minimap-button"]["hide"] = not value
 
 		if value then
 			Utils.minimapButton:Show("Commodum")
@@ -55,7 +55,7 @@ function Options:Initialize()
 
 	-- Debug Mode
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.settings.general,
+		variableTable = COM.Settings.general,
 		settingKey    = addonName .. "_debug-mode",
 		variableName  = "debug-mode",
 		name          = L["options.general.debug-mode.name"],
@@ -67,7 +67,7 @@ function Options:Initialize()
 
 	-- Military Time
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.settings.qualityOfLife,
+		variableTable = COM.Settings.qualityOfLife,
 		settingKey    = addonName .. "_military-time",
 		variableName  = "military-time",
 		name          = L["options.quality-of-life.military-time.name"],
@@ -78,7 +78,7 @@ function Options:Initialize()
 
 	-- Watched Faction
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.settings.qualityOfLife,
+		variableTable = COM.Settings.qualityOfLife,
 		settingKey    = addonName .. "_watched-faction",
 		variableName  = "watched-faction",
 		name          = L["options.quality-of-life.watched-faction.name"],
@@ -107,4 +107,4 @@ function Options:Initialize()
 	Addon:SetMainCategoryId(category:GetID())
 end
 
-COM.modules.Options = Options
+COM.Modules.Options = Options

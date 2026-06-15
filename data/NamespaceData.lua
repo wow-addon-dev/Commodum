@@ -1,14 +1,14 @@
 local addonName, COM = ...
 
-COM.settings = COM.settings or {}
-COM.data = COM.data or {}
-COM.state = COM.state or {}
-COM.modules = COM.modules or {}
+COM.Settings = COM.Settings or {}
+COM.Data = COM.Data or {}
+COM.State = COM.State or {}
+COM.Modules = COM.Modules or {}
 
 local AWL = ArcaneWizardLibrary
 
 AWL:NewAddon(addonName, {
 	debugEnabled = function()
-		return COM.settings.general and COM.settings.general["debug-mode"]
+		return COM.Settings.general and COM.Settings.general["debug-mode"]
 	end
 })

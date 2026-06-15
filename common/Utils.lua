@@ -106,11 +106,11 @@ function Utils:InitializeDatabase()
 	local useAccountProfile = Commodum_Options_v2.profileKeys[characterRealmKey]["use-account"]
 
 	if useAccountProfile then
-		COM.settings.general = Commodum_Options_v2.account["general"]
-		COM.settings.qualityOfLife = Commodum_Options_v2.account["quality-of-life"]
+		COM.Settings.general = Commodum_Options_v2.account["general"]
+		COM.Settings.qualityOfLife = Commodum_Options_v2.account["quality-of-life"]
 	else
-		COM.settings.general = Commodum_Options_v2.profiles[characterRealmKey]["general"]
-		COM.settings.qualityOfLife = Commodum_Options_v2.profiles[characterRealmKey]["quality-of-life"]
+		COM.Settings.general = Commodum_Options_v2.profiles[characterRealmKey]["general"]
+		COM.Settings.qualityOfLife = Commodum_Options_v2.profiles[characterRealmKey]["quality-of-life"]
 	end
 
 	return {
@@ -123,9 +123,9 @@ end
 
 function Utils:InitializeMinimapButton()
 	self.minimapButton = Addon:RegisterMinimapButton({
-		db = COM.settings.general["minimap-button"],
+		db = COM.Settings.general["minimap-button"],
 		tooltip = L["minimap-button.tooltip"]
 	})
 end
 
-COM.modules.Utils = Utils
+COM.Modules.Utils = Utils
