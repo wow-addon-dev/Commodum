@@ -1,3 +1,6 @@
+**v1.4 (2026-06-16)**
+- Minor code adjustments
+
 **v1.3 (2026-06-14)**
 - Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
 
