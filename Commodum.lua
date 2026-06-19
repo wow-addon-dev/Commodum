@@ -21,7 +21,7 @@ local function SlashCommand(msg, editbox)
 	if not msg or strtrim(msg) == "" then
 		Addon:OpenCategory()
 	else
-		Utils:PrintDebug("No arguments will be accepted.")
+		Addon:PrintDebug("No arguments will be accepted.")
 	end
 end
 
@@ -41,16 +41,16 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 
 		Utils:OpenSettingsOnLoading()
 
-		Utils:PrintDebug(string.format(
+		Addon:PrintDebug(string.format(
 			"InitializeDatabase: key=%s, createdProfile=%s, createdProfileKey=%s, activeProfile=%s",
 			tostring(dbInit.characterRealmKey), tostring(dbInit.createdProfile), tostring(dbInit.createdProfileKey), tostring(dbInit.activeProfile)
 		))
-		Utils:PrintDebug("Addon fully loaded.")
+		Addon:PrintDebug("Addon fully loaded.")
 	end
 end
 
 function CommodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'PLAYER_ENTERING_WORLD' fired. Payload: isInitialLogin=%s, isReloadingUi=%s",
 		tostring(isInitialLogin), tostring(isReloadingUi)
 	))
@@ -59,7 +59,7 @@ function CommodumFrame:PLAYER_ENTERING_WORLD(_, isInitialLogin, isReloadingUi)
 end
 
 function CommodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
-	Utils:PrintDebug(string.format(
+	Addon:PrintDebug(string.format(
 		"Event 'FACTION_STANDING_CHANGED' fired. Payload: factionID=%s, updatedStanding=%s",
 		tostring(factionID), tostring(updatedStanding)
 	))

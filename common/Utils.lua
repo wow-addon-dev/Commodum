@@ -7,38 +7,22 @@ local L = COM.Localization
 
 local Utils = {}
 
------------------------
---- Local Functions ---
------------------------
-
-local function CopyTable(source)
-	return AWL.Utils:CopyTable(source)
-end
-
-local function GetCharacterRealmKey()
-	return AWL.Utils:GetCharacterRealmKey()
-end
-
 ------------------------
 --- Public Functions ---
 ------------------------
-
-function Utils:PrintDebug(msg)
-	Addon:PrintDebug(msg)
-end
 
 function Utils:PrintMessage(msg)
 	Addon:PrintMessage(msg)
 end
 
 function Utils:IsAccountProfile()
-	local characterRealmKey = GetCharacterRealmKey()
+	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
 
 	return Commodum_Options_v2.profileKeys[characterRealmKey]["use-account"]
 end
 
 function Utils:OpenSettingsOnLoading()
-	local characterRealmKey = GetCharacterRealmKey()
+	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
 
 	if Commodum_Options_v2.profileKeys[characterRealmKey]["open-settings"] then
 		Addon:OpenCategory()
@@ -48,7 +32,7 @@ function Utils:OpenSettingsOnLoading()
 end
 
 function Utils:ToggleProfileMode()
-	local characterRealmKey = GetCharacterRealmKey()
+	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
 	local useAccountProfile = self:IsAccountProfile()
 
 	Commodum_Options_v2.profileKeys[characterRealmKey]["use-account"] = not useAccountProfile
@@ -56,7 +40,7 @@ function Utils:ToggleProfileMode()
 end
 
 function Utils:ResetAllCharacterProfiles()
-	local characterRealmKey = GetCharacterRealmKey()
+	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
 
 	Commodum_Options_v2.profiles = {}
 	Commodum_Options_v2.profileKeys = {}
@@ -68,7 +52,7 @@ function Utils:ResetAllCharacterProfiles()
 end
 
 function Utils:InitializeDatabase()
-	local characterRealmKey = GetCharacterRealmKey()
+	local characterRealmKey = AWL.Utils:GetCharacterRealmKey()
 
 	local createdProfile = false
 	local createdProfileKey = false
@@ -84,14 +68,14 @@ function Utils:InitializeDatabase()
 
 	if not Commodum_Options_v2 then
 		Commodum_Options_v2 = {
-			["account"] = CopyTable(defaults),
+			["account"] = AWL.Utils:CopyTable(defaults),
 			["profiles"] = {},
 			["profileKeys"] = {}
 		}
 	end
 
 	if not Commodum_Options_v2.profiles[characterRealmKey] then
-		Commodum_Options_v2.profiles[characterRealmKey] = CopyTable(defaults)
+		Commodum_Options_v2.profiles[characterRealmKey] = AWL.Utils:CopyTable(defaults)
 		createdProfile = true
 	end
 
