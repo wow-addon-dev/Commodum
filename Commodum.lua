@@ -1,8 +1,10 @@
 local addonName, COM = ...
 
+-- Library
 local AWL = ArcaneWizardLibrary
 local Addon = AWL:GetAddon(addonName)
 
+-- Module imports
 local Options = COM.Modules.Options
 local QualityOfLife = COM.Modules.QualityOfLife
 local Utils = COM.Modules.Utils

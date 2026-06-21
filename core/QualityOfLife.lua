@@ -1,6 +1,11 @@
 local _, COM = ...
 
-local QualityOfLife = {}
+-- Current module
+local QualityOfLife = COM.Modules.QualityOfLife
+
+------------------------
+--- Module Functions ---
+------------------------
 
 function QualityOfLife:ApplyMilitaryTimeSetting()
 	SetCVar("timeMgrUseMilitaryTime", COM.Settings.qualityOfLife["military-time"] and 1 or 0)
@@ -13,5 +18,3 @@ function QualityOfLife:WatchFaction(factionID)
 
 	C_Reputation.SetWatchedFactionByID(factionID)
 end
-
-COM.Modules.QualityOfLife = QualityOfLife
