@@ -47,55 +47,55 @@ function Options:Initialize()
 
 	-- Minimap Button
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = minimapButtonProxy,
-		settingKey    = addonName .. "_hide",
-		variableName  = "hide",
-		name          = L["options.general.minimap-button.name"],
-		tooltip       = L["options.general.minimap-button.tooltip"],
-		default       = true
+		variableTable	= minimapButtonProxy,
+		settingKey		= addonName .. "_hide",
+		variableName	= "hide",
+		name			= L["options.general.minimap-button.name"],
+		tooltip			= L["options.general.minimap-button.tooltip"],
+		default			= true
 	})
 
 	-- Debug Mode
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.Settings.general,
-		settingKey    = addonName .. "_debug-mode",
-		variableName  = "debug-mode",
-		name          = L["options.general.debug-mode.name"],
-		tooltip       = L["options.general.debug-mode.tooltip"],
-		default       = false
+		variableTable	= COM.Settings.general,
+		settingKey		= addonName .. "_debug-mode",
+		variableName	= "debug-mode",
+		name			= L["options.general.debug-mode.name"],
+		tooltip			= L["options.general.debug-mode.tooltip"],
+		default			= false
 	})
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.quality-of-life"]))
 
 	-- Military Time
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.Settings.qualityOfLife,
-		settingKey    = addonName .. "_military-time",
-		variableName  = "military-time",
-		name          = L["options.quality-of-life.military-time.name"],
-		tooltip       = L["options.quality-of-life.military-time.tooltip"],
-		default       = true,
-		onClick       = function() QualityOfLife:ApplyMilitaryTimeSetting() end
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_military-time",
+		variableName	= "military-time",
+		name			= L["options.quality-of-life.military-time.name"],
+		tooltip			= L["options.quality-of-life.military-time.tooltip"],
+		default			= true,
+		onClick			= function() QualityOfLife:ApplyMilitaryTimeSetting() end
 	})
 
 	-- Watched Faction
 	AWL.Settings:AddCheckbox(category, {
-		variableTable = COM.Settings.qualityOfLife,
-		settingKey    = addonName .. "_watched-faction",
-		variableName  = "watched-faction",
-		name          = L["options.quality-of-life.watched-faction.name"],
-		tooltip       = L["options.quality-of-life.watched-faction.tooltip"],
-		default       = true
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_watched-faction",
+		variableName	= "watched-faction",
+		name			= L["options.quality-of-life.watched-faction.name"],
+		tooltip			= L["options.quality-of-life.watched-faction.tooltip"],
+		default			= true
 	})
 
 	-- Profiles Section
 	AWL.Settings:AddProfilesSection(layout, {
-		useAccountProfile = Utils:IsAccountProfile(),
-		onSwitchProfile = function()
+		useAccountProfile			= Utils:IsAccountProfile(),
+		onSwitchProfile				= function()
 			Utils:ToggleProfileMode()
 			ReloadUI()
 		end,
-		onDeleteCharacterProfiles = function()
+		onDeleteCharacterProfiles	= function()
 			Utils:ResetAllCharacterProfiles()
 			ReloadUI()
 		end
