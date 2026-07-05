@@ -11,8 +11,4 @@ COM.Modules.Utils = COM.Modules.Utils or {}
 
 local AWL = ArcaneWizardLibrary
 
-AWL:NewAddon(addonName, {
-	debugEnabled = function()
-		return COM.Settings.general and COM.Settings.general["debug-mode"]
-	end
-})
+AWL:NewAddon(addonName)
