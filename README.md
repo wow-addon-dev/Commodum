@@ -10,6 +10,12 @@ Commodum is a World of Warcraft addon that adds a few quality-of-life improvemen
 
 * **Quality of Life Tweaks** - Adds lightweight, optional convenience improvements to the default interface for smoother everyday gameplay.
 
+## Installation & Quick Start
+
+> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Expositum via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
+
+To open the addon options menu, type `/com` or `/commodum` into your chat and press enter.
+
 ## Features
 
 * Uses the 24-hour clock for the in-game time display and automatically reapplies the setting after login/UI reload to work around a known Blizzard UI issue.
@@ -21,12 +27,6 @@ Commodum is a World of Warcraft addon that adds a few quality-of-life improvemen
 
 * Languages: English, German
 * Flavors: Retail
-
-## Installation & Quick Start
-
-> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Expositum via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
-
-To open the addon options menu, type `/com` or `/commodum` into your chat and press enter.
 
 ## Bugs & Feedback
 
