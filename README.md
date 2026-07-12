@@ -12,7 +12,7 @@ Commodum is a World of Warcraft addon that adds a few quality-of-life improvemen
 
 ## Installation & Quick Start
 
-> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Expositum via the CurseForge client, the library will be downloaded automatically. If you install it manually, please ensure the library is also downloaded and enabled.
+> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Commodum via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
 
 To open the addon options menu, type `/com` or `/commodum` into your chat and press enter.
 
