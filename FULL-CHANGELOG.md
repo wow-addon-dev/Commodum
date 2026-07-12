@@ -1,3 +1,6 @@
+**v1.10 (2026-07-12)**
+- Added: Wago project page button
+
 **v1.9 (2026-07-09)**
 - Minor code adjustments
 
