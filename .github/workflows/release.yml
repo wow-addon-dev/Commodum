@@ -1,5 +1,5 @@
 name: Publish 'Commodum'
-run-name: Publish 'Commodum' (${{ github.event.inputs.release-type }})
+run-name: Publish 'Commodum' (${{ inputs.release-type }})
 
 on:
   workflow_dispatch:

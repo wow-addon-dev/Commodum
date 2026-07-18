@@ -29,9 +29,9 @@ local minimapButtonProxy = setmetatable({}, {
 		COM.Settings.general["minimap-button"]["hide"] = not value
 
 		if value then
-			Utils.minimapButton:Show("Commodum")
+			Utils.minimapButton:Show(addonName)
 		else
-			Utils.minimapButton:Hide("Commodum")
+			Utils.minimapButton:Hide(addonName)
 		end
 	end,
 })
