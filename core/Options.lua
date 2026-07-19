@@ -88,6 +88,43 @@ function Options:Initialize()
 		default			= true
 	})
 
+	-- Automatically Sell Marked Items
+	local initializerAutoSellMarked, settingAutoSellMarked = AWL.Settings:AddCheckbox(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_auto-sell",
+		variableName	= "auto-sell",
+		name			= L["options.quality-of-life.auto-sell.name"],
+		tooltip			= L["options.quality-of-life.auto-sell.tooltip"],
+		default			= false
+	})
+
+	-- Marking Modifier
+	AWL.Settings:AddDropdown(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_auto-sell-marking-modifier",
+		variableName	= "auto-sell-marking-modifier",
+		name			= L["options.auto-sell.marking-modifier.name"],
+		tooltip			= L["options.auto-sell.marking-modifier.tooltip"],
+		default			= "ALT",
+		options			= {
+			{ value = "ALT", label = L["auto-sell.marking-modifier.alt"] },
+			{ value = "CTRL", label = L["auto-sell.marking-modifier.ctrl"] },
+			{ value = "SHIFT", label = L["auto-sell.marking-modifier.shift"] }
+		},
+		parentInit		= initializerAutoSellMarked,
+		parentCondition	= function() return settingAutoSellMarked:GetValue() end
+	})
+
+	-- Automatically Sell Poor-Quality Items
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_auto-sell-poor",
+		variableName	= "auto-sell-poor",
+		name			= L["options.auto-sell.poor.name"],
+		tooltip			= L["options.auto-sell.poor.tooltip"],
+		default			= false
+	})
+
 	-- Profiles Section
 	AWL.Settings:AddProfilesSection(layout, {
 		useAccountProfile			= Utils:IsAccountProfile(),

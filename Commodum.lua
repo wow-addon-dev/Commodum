@@ -1,6 +1,7 @@
 local addonName, COM = ...
 
 -- Module imports
+local AutoSell = COM.Modules.AutoSell
 local Options = COM.Modules.Options
 local QualityOfLife = COM.Modules.QualityOfLife
 local Utils = COM.Modules.Utils
@@ -38,6 +39,7 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 		local dbInit = Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
+		AutoSell:Initialize()
 
 		Utils:OpenSettingsOnLoading()
 
@@ -67,9 +69,19 @@ function CommodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
 	QualityOfLife:WatchFaction(factionID)
 end
 
+function CommodumFrame:MERCHANT_SHOW()
+	AutoSell:StartSelling()
+end
+
+function CommodumFrame:MERCHANT_CLOSED()
+	AutoSell:StopSelling()
+end
+
 CommodumFrame:RegisterEvent("ADDON_LOADED")
 CommodumFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 CommodumFrame:RegisterEvent("FACTION_STANDING_CHANGED")
+CommodumFrame:RegisterEvent("MERCHANT_SHOW")
+CommodumFrame:RegisterEvent("MERCHANT_CLOSED")
 CommodumFrame:SetScript("OnEvent", CommodumFrame.OnEvent)
 
 SLASH_Commodum1, SLASH_Commodum2 = '/com', '/commodum'

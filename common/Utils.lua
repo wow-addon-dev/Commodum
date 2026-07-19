@@ -125,6 +125,12 @@ function Utils:InitializeDatabase()
 		COM.Settings.qualityOfLife = Commodum_Options_v2.profiles[characterRealmKey]["quality-of-life"]
 	end
 
+	if not Commodum_DataAutoSell then
+		Commodum_DataAutoSell = {}
+	end
+
+	COM.Data.autoSell = Commodum_DataAutoSell
+
 	return {
 		characterRealmKey = characterRealmKey,
 		createdProfile = createdProfile,
