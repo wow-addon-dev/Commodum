@@ -1,5 +1,5 @@
 **v1.12 (2026-07-19)**
-- Minor code adjustments
+- Added: Automatically sells all copies of items marked per character and, optionally, all poor-quality items when a merchant window opens
 
 **v1.11 (2026-07-18)**
 - Minor code adjustments
