@@ -1,7 +1,6 @@
 local addonName, COM = ...
 
 -- Module imports
-local AutoSell = COM.Modules.AutoSell
 local Options = COM.Modules.Options
 local QualityOfLife = COM.Modules.QualityOfLife
 local Utils = COM.Modules.Utils
@@ -39,7 +38,7 @@ function CommodumFrame:ADDON_LOADED(_, addOnName)
 		local dbInit = Utils:InitializeDatabase()
 		Utils:InitializeMinimapButton()
 		Options:Initialize()
-		AutoSell:Initialize()
+		QualityOfLife:InitializeAutoSell()
 
 		Utils:OpenSettingsOnLoading()
 
@@ -70,11 +69,11 @@ function CommodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
 end
 
 function CommodumFrame:MERCHANT_SHOW()
-	AutoSell:StartSelling()
+	QualityOfLife:StartAutoSell()
 end
 
 function CommodumFrame:MERCHANT_CLOSED()
-	AutoSell:StopSelling()
+	QualityOfLife:StopAutoSell()
 end
 
 CommodumFrame:RegisterEvent("ADDON_LOADED")

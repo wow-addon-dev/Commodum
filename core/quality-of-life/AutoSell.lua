@@ -4,7 +4,7 @@ local _, COM = ...
 local L = COM.Localization
 
 -- Current module
-local AutoSell = COM.Modules.AutoSell
+local QualityOfLife = COM.Modules.QualityOfLife
 
 -- Module imports
 local Utils = COM.Modules.Utils
@@ -51,19 +51,19 @@ end
 --- Module Functions ---
 ------------------------
 
-function AutoSell:GetMarkedItems()
+function QualityOfLife:GetMarkedItems()
 	return COM.Data.autoSell
 end
 
-function AutoSell:IsItemMarked(itemID)
+function QualityOfLife:IsItemMarked(itemID)
 	return itemID and self:GetMarkedItems()[itemID] == true
 end
 
-function AutoSell:IsItemSellable(containerInfo)
+function QualityOfLife:IsItemSellable(containerInfo)
 	return containerInfo and not containerInfo.hasNoValue and GetItemSellPrice(containerInfo) > 0
 end
 
-function AutoSell:GetMarkingModifier()
+function QualityOfLife:GetMarkingModifier()
 	local modifier = COM.Settings.qualityOfLife["auto-sell-marking-modifier"]
 
 	if not MARKING_MODIFIER_CHECKS[modifier] then
@@ -73,19 +73,19 @@ function AutoSell:GetMarkingModifier()
 	return modifier
 end
 
-function AutoSell:GetMarkingModifierLabel()
+function QualityOfLife:GetMarkingModifierLabel()
 	return L["auto-sell.marking-modifier." .. self:GetMarkingModifier():lower()]
 end
 
-function AutoSell:IsMarkingModifierDown()
+function QualityOfLife:IsMarkingModifierDown()
 	return MARKING_MODIFIER_CHECKS[self:GetMarkingModifier()]()
 end
 
-function AutoSell:IsAnyAutomaticSellingEnabled()
+function QualityOfLife:IsAnyAutomaticSellingEnabled()
 	return COM.Settings.qualityOfLife["auto-sell"] or COM.Settings.qualityOfLife["auto-sell-poor"]
 end
 
-function AutoSell:ShouldSellItem(containerInfo)
+function QualityOfLife:ShouldSellItem(containerInfo)
 	if not containerInfo then
 		return false
 	end
@@ -96,7 +96,7 @@ function AutoSell:ShouldSellItem(containerInfo)
 	return sellMarkedItem or sellPoorItem
 end
 
-function AutoSell:AddButtonTooltip(button)
+function QualityOfLife:AddButtonTooltip(button)
 	if not COM.Settings.qualityOfLife["auto-sell"] or GameTooltip:GetOwner() ~= button then
 		return
 	end
@@ -125,7 +125,7 @@ function AutoSell:AddButtonTooltip(button)
 	GameTooltip:Show()
 end
 
-function AutoSell:OnModifiedItemClick(button, mouseButton)
+function QualityOfLife:OnModifiedItemClick(button, mouseButton)
 	if not COM.Settings.qualityOfLife["auto-sell"]
 		or mouseButton ~= "RightButton"
 		or not self:IsMarkingModifierDown()
@@ -160,30 +160,30 @@ function AutoSell:OnModifiedItemClick(button, mouseButton)
 	end
 end
 
-function AutoSell:TryInitializeContainerHooks()
+function QualityOfLife:TryInitializeContainerHooks()
 	if self.containerHooksInitialized or not ContainerFrameItemButtonMixin then
 		return
 	end
 
 	hooksecurefunc(ContainerFrameItemButtonMixin, "OnModifiedClick", function(button, mouseButton)
-		AutoSell:OnModifiedItemClick(button, mouseButton)
+		QualityOfLife:OnModifiedItemClick(button, mouseButton)
 	end)
 
 	hooksecurefunc(ContainerFrameItemButtonMixin, "OnUpdate", function(button)
-		AutoSell:AddButtonTooltip(button)
+		QualityOfLife:AddButtonTooltip(button)
 	end)
 
 	self.containerHooksInitialized = true
 end
 
-function AutoSell:CancelSaleTimer()
+function QualityOfLife:CancelSaleTimer()
 	if self.saleTimer then
 		self.saleTimer:Cancel()
 		self.saleTimer = nil
 	end
 end
 
-function AutoSell:ResetSaleState()
+function QualityOfLife:ResetSaleState()
 	self:CancelSaleTimer()
 	self.saleQueue = nil
 	self.saleQueueIndex = nil
@@ -193,12 +193,12 @@ function AutoSell:ResetSaleState()
 	self.saleInProgress = false
 end
 
-function AutoSell:ScheduleSaleStep(delay, callback)
+function QualityOfLife:ScheduleSaleStep(delay, callback)
 	self:CancelSaleTimer()
 	self.saleTimer = C_Timer.NewTimer(delay, callback)
 end
 
-function AutoSell:FinishSelling()
+function QualityOfLife:FinishSelling()
 	local soldItemCount = self.soldItemCount or 0
 	local soldValue = self.soldValue or 0
 
@@ -211,7 +211,7 @@ function AutoSell:FinishSelling()
 	end
 end
 
-function AutoSell:ProcessNextSale()
+function QualityOfLife:ProcessNextSale()
 	if not self.saleInProgress or not self:IsAnyAutomaticSellingEnabled() or not IsMerchantAvailable() then
 		self:ResetSaleState()
 		return
@@ -234,7 +234,7 @@ function AutoSell:ProcessNextSale()
 		or not self:ShouldSellItem(containerInfo)
 		or not self:IsItemSellable(containerInfo)
 	then
-		self:ScheduleSaleStep(0, function() AutoSell:ProcessNextSale() end)
+		self:ScheduleSaleStep(0, function() QualityOfLife:ProcessNextSale() end)
 		return
 	end
 
@@ -248,10 +248,10 @@ function AutoSell:ProcessNextSale()
 	}
 
 	C_Container.UseContainerItem(entry.bagID, entry.slotID)
-	self:ScheduleSaleStep(SALE_DELAY, function() AutoSell:ConfirmPendingSale() end)
+	self:ScheduleSaleStep(SALE_DELAY, function() QualityOfLife:ConfirmPendingSale() end)
 end
 
-function AutoSell:ConfirmPendingSale()
+function QualityOfLife:ConfirmPendingSale()
 	if not self.saleInProgress or not self.pendingSale then
 		return
 	end
@@ -268,7 +268,7 @@ function AutoSell:ConfirmPendingSale()
 
 	if soldCount == 0 and pendingSale.confirmationAttempts < SALE_CONFIRMATION_ATTEMPTS then
 		pendingSale.confirmationAttempts = pendingSale.confirmationAttempts + 1
-		self:ScheduleSaleStep(SALE_DELAY, function() AutoSell:ConfirmPendingSale() end)
+		self:ScheduleSaleStep(SALE_DELAY, function() QualityOfLife:ConfirmPendingSale() end)
 		return
 	end
 
@@ -281,7 +281,7 @@ function AutoSell:ConfirmPendingSale()
 	self:ProcessNextSale()
 end
 
-function AutoSell:BuildSaleQueue()
+function QualityOfLife:BuildSaleQueue()
 	local saleQueue = {}
 
 	for bagID = FIRST_BAG_ID, LAST_BAG_ID do
@@ -301,7 +301,7 @@ function AutoSell:BuildSaleQueue()
 	return saleQueue
 end
 
-function AutoSell:StartSelling()
+function QualityOfLife:StartAutoSell()
 	self:ResetSaleState()
 
 	if not self:IsAnyAutomaticSellingEnabled() then
@@ -320,13 +320,13 @@ function AutoSell:StartSelling()
 	self.soldValue = 0
 	self.saleInProgress = true
 
-	self:ScheduleSaleStep(SALE_DELAY, function() AutoSell:ProcessNextSale() end)
+	self:ScheduleSaleStep(SALE_DELAY, function() QualityOfLife:ProcessNextSale() end)
 end
 
-function AutoSell:StopSelling()
+function QualityOfLife:StopAutoSell()
 	self:ResetSaleState()
 end
 
-function AutoSell:Initialize()
+function QualityOfLife:InitializeAutoSell()
 	self:TryInitializeContainerHooks()
 end

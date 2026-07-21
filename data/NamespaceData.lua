@@ -7,7 +7,6 @@ COM.Modules = COM.Modules or {}
 
 COM.Modules.Options = COM.Modules.Options or {}
 COM.Modules.QualityOfLife = COM.Modules.QualityOfLife or {}
-COM.Modules.AutoSell = COM.Modules.AutoSell or {}
 COM.Modules.Utils = COM.Modules.Utils or {}
 
 local AWL = ArcaneWizardLibrary
