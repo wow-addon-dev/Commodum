@@ -1,3 +1,6 @@
+**v1.13 (2026-07-21)**
+- Refactoring of the addon structure and source code
+
 **v1.12 (2026-07-19)**
 - Added: Automatically sells all copies of items marked per character and, optionally, all poor-quality items when a merchant window opens
 
