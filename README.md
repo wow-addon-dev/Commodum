@@ -22,6 +22,7 @@ To open the addon options menu, type `/com` or `/commodum` into your chat and pr
 * Automatically sets the faction whose reputation changed as the watched faction.
 * Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens.
 * Can independently sell every poor-quality (gray) item when a merchant window opens.
+* Can hide general loot notifications for items, money, and personal currencies.
 * All features can be activated or deactivated separately.
 * Supports an account profile and character profiles.
 
