@@ -1,5 +1,8 @@
 local _, COM = ...
 
+-- Enable only for releases with new features or important changes.
+COM.SHOW_UPDATE_NOTICE = true
+
 COM.AUTO_SELL_FIRST_BAG_ID = Enum.BagIndex.Backpack
 COM.AUTO_SELL_LAST_BAG_ID = COM.AUTO_SELL_FIRST_BAG_ID
 	+ Constants.InventoryConstants.NumBagSlots

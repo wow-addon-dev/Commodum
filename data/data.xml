@@ -2,5 +2,5 @@
 ..\FrameXML\UI.xsd">
 	<Script file="NamespaceData.lua" />
 
-	<Script file="quality-of-life\AutoSellData.lua" />
+	<Script file="CommonData.lua" />
 </Ui>

@@ -88,6 +88,17 @@ function Options:Initialize()
 		default			= true
 	})
 
+	-- Hide Loot Toasts
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_hide-loot-toasts",
+		variableName	= "hide-loot-toasts",
+		name			= L["options.quality-of-life.hide-loot-toasts.name"],
+		tooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
+		default			= false,
+		onClick			= function() QualityOfLife:ApplyLootToastSetting() end
+	})
+
 	-- Automatically Sell Marked Items
 	local initializerAutoSellMarked, settingAutoSellMarked = AWL.Settings:AddCheckbox(category, {
 		variableTable	= COM.Settings.qualityOfLife,
