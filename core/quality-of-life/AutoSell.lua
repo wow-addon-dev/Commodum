@@ -9,31 +9,35 @@ local QualityOfLife = COM.Modules.QualityOfLife
 -- Module imports
 local Utils = COM.Modules.Utils
 
--- Constants
-local FIRST_BAG_ID = Enum.BagIndex.Backpack
-local LAST_BAG_ID = FIRST_BAG_ID
-	+ Constants.InventoryConstants.NumBagSlots
-	+ (Constants.InventoryConstants.NumReagentBagSlots or 0)
-local SALE_DELAY = 0.2
-local SALE_CONFIRMATION_ATTEMPTS = 3
-local TOOLTIP_ICON = "|TInterface\\MoneyFrame\\UI-GoldIcon:14:14:0:0|t"
-local DEFAULT_MARKING_MODIFIER = "ALT"
-
-local MARKING_MODIFIER_CHECKS = {
-	ALT = function()
-		return IsAltKeyDown() and not IsControlKeyDown() and not IsShiftKeyDown()
-	end,
-	CTRL = function()
-		return IsControlKeyDown() and not IsAltKeyDown() and not IsShiftKeyDown()
-	end,
-	SHIFT = function()
-		return IsShiftKeyDown() and not IsAltKeyDown() and not IsControlKeyDown()
-	end
-}
-
 -----------------------
 --- Local Functions ---
 -----------------------
+
+local function GetPressedModifier()
+	local pressedModifier
+
+	if IsAltKeyDown() then
+		pressedModifier = "ALT"
+	end
+
+	if IsControlKeyDown() then
+		if pressedModifier then
+			return nil
+		end
+
+		pressedModifier = "CTRL"
+	end
+
+	if IsShiftKeyDown() then
+		if pressedModifier then
+			return nil
+		end
+
+		pressedModifier = "SHIFT"
+	end
+
+	return pressedModifier
+end
 
 local function GetItemSellPrice(containerInfo)
 	if not containerInfo or containerInfo.hasNoValue then
@@ -66,8 +70,8 @@ end
 function QualityOfLife:GetMarkingModifier()
 	local modifier = COM.Settings.qualityOfLife["auto-sell-marking-modifier"]
 
-	if not MARKING_MODIFIER_CHECKS[modifier] then
-		return DEFAULT_MARKING_MODIFIER
+	if modifier ~= "ALT" and modifier ~= "CTRL" and modifier ~= "SHIFT" then
+		return COM.AUTO_SELL_DEFAULT_MARKING_MODIFIER
 	end
 
 	return modifier
@@ -78,7 +82,7 @@ function QualityOfLife:GetMarkingModifierLabel()
 end
 
 function QualityOfLife:IsMarkingModifierDown()
-	return MARKING_MODIFIER_CHECKS[self:GetMarkingModifier()]()
+	return GetPressedModifier() == self:GetMarkingModifier()
 end
 
 function QualityOfLife:IsAnyAutomaticSellingEnabled()
@@ -108,11 +112,11 @@ function QualityOfLife:AddButtonTooltip(button)
 	end
 
 	if self:IsItemMarked(containerInfo.itemID) then
-		local itemNameLine = GameTooltip.TextLeft1
+		local itemNameLine = _G[GameTooltip:GetName() .. "TextLeft1"]
 		local itemName = itemNameLine and itemNameLine:GetText()
 
-		if itemName and not itemName:find(TOOLTIP_ICON, 1, true) then
-			itemNameLine:SetText(itemName .. " " .. TOOLTIP_ICON)
+		if itemName and not itemName:find(COM.AUTO_SELL_TOOLTIP_ICON, 1, true) then
+			itemNameLine:SetText(itemName .. " " .. COM.AUTO_SELL_TOOLTIP_ICON)
 		end
 
 		GameTooltip:AddLine(" ")
@@ -248,7 +252,7 @@ function QualityOfLife:ProcessNextSale()
 	}
 
 	C_Container.UseContainerItem(entry.bagID, entry.slotID)
-	self:ScheduleSaleStep(SALE_DELAY, function() QualityOfLife:ConfirmPendingSale() end)
+	self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function() QualityOfLife:ConfirmPendingSale() end)
 end
 
 function QualityOfLife:ConfirmPendingSale()
@@ -266,9 +270,9 @@ function QualityOfLife:ConfirmPendingSale()
 
 	local soldCount = math.max(pendingSale.stackCount - remainingCount, 0)
 
-	if soldCount == 0 and pendingSale.confirmationAttempts < SALE_CONFIRMATION_ATTEMPTS then
+	if soldCount == 0 and pendingSale.confirmationAttempts < COM.AUTO_SELL_CONFIRMATION_ATTEMPTS then
 		pendingSale.confirmationAttempts = pendingSale.confirmationAttempts + 1
-		self:ScheduleSaleStep(SALE_DELAY, function() QualityOfLife:ConfirmPendingSale() end)
+		self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function() QualityOfLife:ConfirmPendingSale() end)
 		return
 	end
 
@@ -284,7 +288,7 @@ end
 function QualityOfLife:BuildSaleQueue()
 	local saleQueue = {}
 
-	for bagID = FIRST_BAG_ID, LAST_BAG_ID do
+	for bagID = COM.AUTO_SELL_FIRST_BAG_ID, COM.AUTO_SELL_LAST_BAG_ID do
 		for slotID = 1, C_Container.GetContainerNumSlots(bagID) do
 			local containerInfo = C_Container.GetContainerItemInfo(bagID, slotID)
 
@@ -320,7 +324,7 @@ function QualityOfLife:StartAutoSell()
 	self.soldValue = 0
 	self.saleInProgress = true
 
-	self:ScheduleSaleStep(SALE_DELAY, function() QualityOfLife:ProcessNextSale() end)
+	self:ScheduleSaleStep(COM.AUTO_SELL_DELAY, function() QualityOfLife:ProcessNextSale() end)
 end
 
 function QualityOfLife:StopAutoSell()
