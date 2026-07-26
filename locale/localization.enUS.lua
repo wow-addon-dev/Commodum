@@ -21,7 +21,7 @@ L["options.quality-of-life.military-time.tooltip"] = "Uses the 24-hour clock for
 L["options.quality-of-life.watched-faction.name"] = "Auto-Watch Reputation"
 L["options.quality-of-life.watched-faction.tooltip"] = "Automatically sets the faction whose reputation changed as the watched faction."
 L["options.quality-of-life.hide-loot-toasts.name"] = "Hide General Loot Toasts"
-L["options.quality-of-life.hide-loot-toasts.tooltip"] = "Hides general loot notifications for items, money, personal currencies, and honor."
+L["options.quality-of-life.hide-loot-toasts.tooltip"] = "Hides general loot notifications for items, money, and personal currencies."
 L["options.quality-of-life.auto-sell.name"] = "Automatically Sell Marked Items"
 L["options.quality-of-life.auto-sell.tooltip"] = "Automatically sells every copy of marked items when a merchant window opens. Use the selected modifier key and right-click items in your bags to mark or unmark them. Item markings are always saved separately for each character."
 

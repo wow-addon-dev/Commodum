@@ -18,7 +18,7 @@ L["options.quality-of-life.military-time.tooltip"] = "Verwendet die 24-Stunden-A
 L["options.quality-of-life.watched-faction.name"] = "Ruffraktion automatisch beobachten"
 L["options.quality-of-life.watched-faction.tooltip"] = "Setzt die Fraktion, deren Ruf sich geändert hat, automatisch als beobachtete Fraktion."
 L["options.quality-of-life.hide-loot-toasts.name"] = "Allgemeine Beute-Benachrichtigungen ausblenden"
-L["options.quality-of-life.hide-loot-toasts.tooltip"] = "Blendet allgemeine Beute-Benachrichtigungen über Gegenstände, Geld, persönliche Währungen und Ehre aus."
+L["options.quality-of-life.hide-loot-toasts.tooltip"] = "Blendet allgemeine Beute-Benachrichtigungen über Gegenstände, Gold und persönlicher Währungen aus."
 L["options.quality-of-life.auto-sell.name"] = "Markierte Gegenstände automatisch verkaufen"
 L["options.quality-of-life.auto-sell.tooltip"] = "Verkauft alle Exemplare markierter Gegenstände automatisch, sobald ein Händlerfenster geöffnet wird. Gegenstände werden im Inventar mit der ausgewählten Modifikatortaste + Rechtsklick markiert oder ihre Markierung wird entfernt. Die Markierungen werden immer getrennt für jeden Charakter gespeichert."
 
