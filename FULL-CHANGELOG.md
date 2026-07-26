@@ -1,3 +1,6 @@
+**v1.14 (2026-07-26)**
+- Minor code adjustments
+
 **v1.13 (2026-07-21)**
 - Refactoring of the addon structure and source code
 
