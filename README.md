@@ -6,7 +6,7 @@ _Smooth out the little things._
 
 Commodum is a World of Warcraft addon that adds a few quality-of-life improvements to everyday gameplay.
 
-> **Important!** This addon requires [Arcane Wizard: Library](https://www.curseforge.com/wow/addons/arcane-wizard-library). See [Installation & Quick Start](#installation--quick-start) for installation details.
+> **Important!** This addon requires **Arcane Wizard: Library**. See [Installation & Quick Start](#installation--quick-start) for installation details.
 
 **Key Feature**
 
