@@ -6,7 +6,7 @@ _Smooth out the little things._
 
 Commodum is a World of Warcraft addon that adds a few quality-of-life improvements to everyday gameplay.
 
-> ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See [Installation & Quick Start](#installation--quick-start) for installation details.
+> ⚠️ **Important!** This addon requires **Arcane Wizard: Library**. See Installation & Quick Start for installation details.
 
 **Key Feature**
 
@@ -18,7 +18,7 @@ Commodum is a World of Warcraft addon that adds a few quality-of-life improvemen
 * Automatically sets the faction whose reputation changed as the watched faction.
 * Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens.
 * Can independently sell every poor-quality (gray) item when a merchant window opens.
-* ![New](https://raw.githubusercontent.com/wow-addon-dev/.github/main/assets/badges/new.png) Can hide general loot notifications for items, money, and personal currencies.
+* <sup>✨ NEW</sup> Can hide general loot notifications for items, money, and personal currencies.
 * All features can be activated or deactivated separately.
 * Supports an account profile and character profiles.
 
