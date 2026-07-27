@@ -6,15 +6,11 @@ _Smooth out the little things._
 
 Commodum is a World of Warcraft addon that adds a few quality-of-life improvements to everyday gameplay.
 
+> **Important!** This addon requires [Arcane Wizard: Library](https://www.curseforge.com/wow/addons/arcane-wizard-library). See [Installation & Quick Start](#installation--quick-start) for installation details.
+
 **Key Feature**
 
 * **Quality of Life Tweaks** - Adds lightweight, optional convenience improvements to the default interface for smoother everyday gameplay.
-
-## Installation & Quick Start
-
-> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Commodum via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
-
-To open the addon options menu, type `/com` or `/commodum` into your chat and press enter.
 
 ## Features
 
@@ -22,7 +18,7 @@ To open the addon options menu, type `/com` or `/commodum` into your chat and pr
 * Automatically sets the faction whose reputation changed as the watched faction.
 * Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens.
 * Can independently sell every poor-quality (gray) item when a merchant window opens.
-* Can hide general loot notifications for items, money, and personal currencies.
+* ![New](https://img.shields.io/badge/NEW-brightgreen?style=flat-square) Can hide general loot notifications for items, money, and personal currencies.
 * All features can be activated or deactivated separately.
 * Supports an account profile and character profiles.
 
@@ -30,6 +26,12 @@ To open the addon options menu, type `/com` or `/commodum` into your chat and pr
 
 * Languages: English, German
 * Flavors: Retail
+
+## Installation & Quick Start
+
+> ⚠️ **Required Dependency:** This addon requires the **Arcane Wizard: Library**. If you install Commodum via the CurseForge client, the library will be downloaded automatically. If you install the addon manually, via Wago, or through another third-party updater that does not resolve dependencies, you must download and enable the library separately.
+
+To open the addon options menu, type `/com` or `/commodum` into your chat and press enter.
 
 ## Bugs & Feedback
 
