@@ -1,3 +1,8 @@
+**v1.15 (2026-07-28)**
+- Added: General loot notifications for items, money, and personal currencies can now be hidden
+- Minor code adjustments
+- Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
+
 **v1.14 (2026-07-26)**
 - Minor code adjustments
 
