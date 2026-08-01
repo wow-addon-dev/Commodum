@@ -1,3 +1,6 @@
+**v1.16 (2026-08-01)**
+- Added: Damaged items can now be repaired automatically with personal funds when a repair merchant window opens
+
 **v1.15 (2026-07-28)**
 - Added: General loot notifications for items, money, and personal currencies can now be hidden
 - Minor code adjustments
