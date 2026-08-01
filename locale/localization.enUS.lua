@@ -22,6 +22,8 @@ L["options.quality-of-life.watched-faction.name"] = "Auto-Watch Reputation"
 L["options.quality-of-life.watched-faction.tooltip"] = "Automatically sets the faction whose reputation changed as the watched faction."
 L["options.quality-of-life.hide-loot-toasts.name"] = "Hide General Loot Toasts"
 L["options.quality-of-life.hide-loot-toasts.tooltip"] = "Hides general loot notifications for items, money, and personal currencies."
+L["options.quality-of-life.auto-repair.name"] = "Automatically Repair Items"
+L["options.quality-of-life.auto-repair.tooltip"] = "Automatically repairs damaged items using personal funds when a repair merchant window opens."
 L["options.quality-of-life.auto-sell.name"] = "Automatically Sell Marked Items"
 L["options.quality-of-life.auto-sell.tooltip"] = "Automatically sells every copy of marked items when a merchant window opens. Use the selected modifier key and right-click items in your bags to mark or unmark them. Item markings are always saved separately for each character."
 
@@ -36,6 +38,8 @@ L["minimap-button.tooltip"] = "|cnLINK_FONT_COLOR:Right-click|r to open the opti
 
 -- Chat
 
+L["auto-repair.chat.repaired"] = "Automatically repaired all items for %s."
+L["auto-repair.chat.insufficient-funds"] = "Items could not be repaired automatically because there is not enough money."
 L["auto-sell.chat.marked"] = "%s will now be sold automatically."
 L["auto-sell.chat.unmarked"] = "%s will no longer be sold automatically."
 L["auto-sell.chat.cannot-mark"] = "%s cannot be marked for automatic selling because the item has no vendor value."

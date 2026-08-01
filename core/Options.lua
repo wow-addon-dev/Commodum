@@ -99,6 +99,16 @@ function Options:Initialize()
 		onClick			= function() QualityOfLife:ApplyLootToastSetting() end
 	})
 
+	-- Automatically Repair Items
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_auto-repair",
+		variableName	= "auto-repair",
+		name			= L["options.quality-of-life.auto-repair.name"],
+		tooltip			= L["options.quality-of-life.auto-repair.tooltip"],
+		default			= false
+	})
+
 	-- Automatically Sell Marked Items
 	local initializerAutoSellMarked, settingAutoSellMarked = AWL.Settings:AddCheckbox(category, {
 		variableTable	= COM.Settings.qualityOfLife,

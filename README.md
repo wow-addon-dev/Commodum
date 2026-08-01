@@ -18,7 +18,8 @@ Commodum is a World of Warcraft addon that adds a few quality-of-life improvemen
 * Automatically sets the faction whose reputation changed as the watched faction.
 * Marks item types with a configurable modifier key plus right-click and automatically sells every matching item from the bags when a merchant window opens.
 * Can independently sell every poor-quality (gray) item when a merchant window opens.
-* <sup>✨ NEW</sup> Can hide general loot notifications for items, money, and personal currencies.
+* Can hide general loot notifications for items, money, and personal currencies.
+* <sup>✨ NEW</sup> Automatically repairs all damaged items using personal funds when a repair merchant window opens.
 * All features can be activated or deactivated separately.
 * Supports an account profile and character profiles.
 

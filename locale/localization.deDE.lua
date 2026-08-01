@@ -19,6 +19,8 @@ L["options.quality-of-life.watched-faction.name"] = "Ruffraktion automatisch beo
 L["options.quality-of-life.watched-faction.tooltip"] = "Setzt die Fraktion, deren Ruf sich geändert hat, automatisch als beobachtete Fraktion."
 L["options.quality-of-life.hide-loot-toasts.name"] = "Allgemeine Beute-Benachrichtigungen ausblenden"
 L["options.quality-of-life.hide-loot-toasts.tooltip"] = "Blendet allgemeine Beute-Benachrichtigungen über Gegenstände, Gold und persönlicher Währungen aus."
+L["options.quality-of-life.auto-repair.name"] = "Gegenstände automatisch reparieren"
+L["options.quality-of-life.auto-repair.tooltip"] = "Repariert beschädigte Gegenstände automatisch mit eigenem Gold, sobald ein reparaturfähiges Händlerfenster geöffnet wird."
 L["options.quality-of-life.auto-sell.name"] = "Markierte Gegenstände automatisch verkaufen"
 L["options.quality-of-life.auto-sell.tooltip"] = "Verkauft alle Exemplare markierter Gegenstände automatisch, sobald ein Händlerfenster geöffnet wird. Gegenstände werden im Inventar mit der ausgewählten Modifikatortaste + Rechtsklick markiert oder ihre Markierung wird entfernt. Die Markierungen werden immer getrennt für jeden Charakter gespeichert."
 
@@ -33,6 +35,8 @@ L["minimap-button.tooltip"] = "|cnLINK_FONT_COLOR:Rechtsklick|r zum Öffnen der 
 
 -- Chat
 
+L["auto-repair.chat.repaired"] = "Alle Gegenstände wurden automatisch für %s repariert."
+L["auto-repair.chat.insufficient-funds"] = "Die Gegenstände konnten nicht automatisch repariert werden, da nicht genügend Gold vorhanden ist."
 L["auto-sell.chat.marked"] = "%s wird künftig automatisch verkauft."
 L["auto-sell.chat.unmarked"] = "%s wird nicht mehr automatisch verkauft."
 L["auto-sell.chat.cannot-mark"] = "%s kann nicht für den automatischen Verkauf markiert werden, da der Gegenstand keinen Händlerwert besitzt."

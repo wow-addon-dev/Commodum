@@ -71,6 +71,7 @@ function CommodumFrame:FACTION_STANDING_CHANGED(_, factionID, updatedStanding)
 end
 
 function CommodumFrame:MERCHANT_SHOW()
+	QualityOfLife:RepairItemsAutomatically()
 	QualityOfLife:StartAutoSell()
 end
 
