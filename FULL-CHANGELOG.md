@@ -1,3 +1,6 @@
+**v1.17 (2026-08-04)**
+- Minor code adjustments
+
 **v1.16 (2026-08-01)**
 - Added: Damaged items can now be repaired automatically with personal funds when a repair merchant window opens
 
