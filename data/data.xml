@@ -3,4 +3,5 @@
 	<Script file="NamespaceData.lua" />
 
 	<Script file="CommonData.lua" />
+	<Script file="ChangelogData.lua" />
 </Ui>

@@ -129,12 +129,7 @@ function Utils:InitializeDatabase()
 		Commodum_DataAutoSell = {}
 	end
 
-	if not Commodum_Options_v2["update-notice"] then
-		Commodum_Options_v2["update-notice"] = {}
-	end
-
 	COM.Data.autoSell = Commodum_DataAutoSell
-	COM.Data.updateNotice = Commodum_Options_v2["update-notice"]
 
 	return {
 		characterRealmKey = characterRealmKey,
@@ -142,19 +137,6 @@ function Utils:InitializeDatabase()
 		createdProfileKey = createdProfileKey,
 		activeProfile = useAccountProfile and "account" or "character"
 	}
-end
-
-function Utils:InitializeUpdateNotice()
-	local data = COM.Data.updateNotice
-
-	if data.lastVersion ~= Addon.version then
-		data.lastVersion = Addon.version
-		data.show = COM.SHOW_UPDATE_NOTICE
-	end
-
-	if Addon:ShowUpdateNotice(data.show == true) then
-		data.show = false
-	end
 end
 
 function Utils:InitializeMinimapButton()
