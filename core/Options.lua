@@ -42,7 +42,6 @@ local minimapButtonProxy = setmetatable({}, {
 
 function Options:Initialize()
 	local category, layout = Settings.RegisterVerticalLayoutCategory(addonName)
-	Addon:SetChangelog(COM.CHANGELOG)
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.general"]))
 
@@ -161,8 +160,7 @@ function Options:Initialize()
 	})
 
 	-- About Section
-	AWL.Settings:AddAboutSection(layout, addonName)
-	Addon:AddChangelogButton(layout)
+	AWL.Settings:AddAboutSection(layout, addonName, COM.CHANGELOG)
 
 	Settings.RegisterAddOnCategory(category)
 

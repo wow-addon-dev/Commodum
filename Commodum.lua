@@ -1,5 +1,8 @@
 local addonName, COM = ...
 
+-- Library
+local AWL = ArcaneWizardLibrary
+
 -- Module imports
 local Options = COM.Modules.Options
 local QualityOfLife = COM.Modules.QualityOfLife
@@ -20,6 +23,8 @@ local function SlashCommand(msg)
 
 	if command == "" then
 		Utils:OpenSettings()
+	elseif command == "changelog" then
+		AWL.Frames:OpenChangelog(addonName, COM.CHANGELOG)
 	else
 		Utils:PrintDebug("No arguments will be accepted.")
 	end
