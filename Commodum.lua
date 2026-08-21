@@ -95,6 +95,8 @@ function CommodumFrame:SHOW_LOOT_TOAST(_, typeIdentifier, itemLink, quantity, sp
 		"Event 'SHOW_LOOT_TOAST' fired. Payload: typeIdentifier=%s, itemLink=%s, quantity=%s, specID=%s, sex=%s, personalLootToast=%s, toastMethod=%s, lessAwesome=%s, upgraded=%s, corrupted=%s",
 		tostring(typeIdentifier), tostring(itemLink), tostring(quantity), tostring(specID), tostring(sex), tostring(personalLootToast), tostring(toastMethod), tostring(lessAwesome), tostring(upgraded), tostring(corrupted)
 	))
+
+	QualityOfLife:HandleLootToast(typeIdentifier, itemLink, quantity, specID, sex, personalLootToast, toastMethod, lessAwesome, upgraded, corrupted)
 end
 
 function CommodumFrame:SHOW_LOOT_TOAST_UPGRADE(_, itemLink, quantity, specID, sex, baseQuality, personalLootToast, lessAwesome)

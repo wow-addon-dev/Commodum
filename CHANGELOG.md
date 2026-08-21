@@ -2,7 +2,6 @@
 ### [@project-version@](https://github.com/wow-addon-dev/Commodum/tree/@project-version@) (@build-date@)
 [Full Changelog](@full-changelog@) - [Previous Releases](https://github.com/wow-addon-dev/Commodum/releases)
 
-- Added: Changelog window available from the options menu
-- Added: Changelog window available through the 'changelog' slash command
-- Removed: Version notice chat messages
-- Adapted to the latest version of Arcane Wizard: Library to ensure full compatibility
+- Changed: General loot notifications can now be hidden separately for items, money, and personal currencies
+- Changed: Quality-of-life options are now organized into expandable sections
+- Changed: Option names were shortened

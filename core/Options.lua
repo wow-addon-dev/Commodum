@@ -67,6 +67,8 @@ function Options:Initialize()
 
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["options.quality-of-life"]))
 
+	local _, isInterfaceExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.quality-of-life.section.interface"])
+
 	-- Military Time
 	AWL.Settings:AddCheckbox(category, {
 		variableTable	= COM.Settings.qualityOfLife,
@@ -75,7 +77,8 @@ function Options:Initialize()
 		name			= L["options.quality-of-life.military-time.name"],
 		tooltip			= L["options.quality-of-life.military-time.tooltip"],
 		default			= true,
-		onClick			= function() QualityOfLife:ApplyMilitaryTimeSetting() end
+		onClick			= function() QualityOfLife:ApplyMilitaryTimeSetting() end,
+		shownPredicate	= isInterfaceExpanded
 	})
 
 	-- Watched Faction
@@ -85,19 +88,64 @@ function Options:Initialize()
 		variableName	= "watched-faction",
 		name			= L["options.quality-of-life.watched-faction.name"],
 		tooltip			= L["options.quality-of-life.watched-faction.tooltip"],
-		default			= true
+		default			= true,
+		shownPredicate	= isInterfaceExpanded
 	})
 
+	local _, isLootToastsExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.quality-of-life.section.loot-toasts"])
+
 	-- Hide Loot Toasts
-	AWL.Settings:AddCheckbox(category, {
+	local initializerHideLootToasts, settingHideLootToasts = AWL.Settings:AddCheckbox(category, {
 		variableTable	= COM.Settings.qualityOfLife,
 		settingKey		= addonName .. "_hide-loot-toasts",
 		variableName	= "hide-loot-toasts",
 		name			= L["options.quality-of-life.hide-loot-toasts.name"],
 		tooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
 		default			= false,
-		onClick			= function() QualityOfLife:ApplyLootToastSetting() end
+		onClick			= function() QualityOfLife:ApplyLootToastSetting() end,
+		shownPredicate	= isLootToastsExpanded
 	})
+
+	-- Hide Item Loot Toasts
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_hide-loot-toasts-item",
+		variableName	= "hide-loot-toasts-item",
+		name			= L["options.quality-of-life.hide-loot-toasts.item.name"],
+		tooltip			= L["options.quality-of-life.hide-loot-toasts.item.tooltip"],
+		default			= true,
+		parentInit		= initializerHideLootToasts,
+		parentCondition	= function() return settingHideLootToasts:GetValue() end,
+		shownPredicate	= isLootToastsExpanded
+	})
+
+	-- Hide Money Loot Toasts
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_hide-loot-toasts-money",
+		variableName	= "hide-loot-toasts-money",
+		name			= L["options.quality-of-life.hide-loot-toasts.money.name"],
+		tooltip			= L["options.quality-of-life.hide-loot-toasts.money.tooltip"],
+		default			= true,
+		parentInit		= initializerHideLootToasts,
+		parentCondition	= function() return settingHideLootToasts:GetValue() end,
+		shownPredicate	= isLootToastsExpanded
+	})
+
+	-- Hide Currency Loot Toasts
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_hide-loot-toasts-currency",
+		variableName	= "hide-loot-toasts-currency",
+		name			= L["options.quality-of-life.hide-loot-toasts.currency.name"],
+		tooltip			= L["options.quality-of-life.hide-loot-toasts.currency.tooltip"],
+		default			= true,
+		parentInit		= initializerHideLootToasts,
+		parentCondition	= function() return settingHideLootToasts:GetValue() end,
+		shownPredicate	= isLootToastsExpanded
+	})
+
+	local _, isMerchantExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.quality-of-life.section.merchant"])
 
 	-- Automatically Repair Items
 	AWL.Settings:AddCheckbox(category, {
@@ -106,7 +154,8 @@ function Options:Initialize()
 		variableName	= "auto-repair",
 		name			= L["options.quality-of-life.auto-repair.name"],
 		tooltip			= L["options.quality-of-life.auto-repair.tooltip"],
-		default			= false
+		default			= false,
+		shownPredicate	= isMerchantExpanded
 	})
 
 	-- Automatically Sell Marked Items
@@ -116,7 +165,8 @@ function Options:Initialize()
 		variableName	= "auto-sell",
 		name			= L["options.quality-of-life.auto-sell.name"],
 		tooltip			= L["options.quality-of-life.auto-sell.tooltip"],
-		default			= false
+		default			= false,
+		shownPredicate	= isMerchantExpanded
 	})
 
 	-- Marking Modifier
@@ -133,7 +183,8 @@ function Options:Initialize()
 			{ value = "SHIFT", label = L["auto-sell.marking-modifier.shift"] }
 		},
 		parentInit		= initializerAutoSellMarked,
-		parentCondition	= function() return settingAutoSellMarked:GetValue() end
+		parentCondition	= function() return settingAutoSellMarked:GetValue() end,
+		shownPredicate	= isMerchantExpanded
 	})
 
 	-- Automatically Sell Poor-Quality Items
@@ -143,7 +194,8 @@ function Options:Initialize()
 		variableName	= "auto-sell-poor",
 		name			= L["options.auto-sell.poor.name"],
 		tooltip			= L["options.auto-sell.poor.tooltip"],
-		default			= false
+		default			= false,
+		shownPredicate	= isMerchantExpanded
 	})
 
 	-- Profiles Section
