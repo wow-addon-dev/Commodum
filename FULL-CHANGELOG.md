@@ -1,3 +1,8 @@
+**v1.20 (2026-08-21)**
+- Changed: General loot notifications can now be hidden separately for items, money, and personal currencies
+- Changed: Quality-of-life options are now organized into expandable sections
+- Changed: Option names were shortened
+
 **v1.19 (2026-08-18)**
 - Added: Changelog window available from the options menu
 - Added: Changelog window available through the 'changelog' slash command
