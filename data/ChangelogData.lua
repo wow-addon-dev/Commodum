@@ -8,6 +8,13 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Minor code adjustments"
+		}
+	},
+	{
+		version = "v1.20",
+		date = "2026-08-21",
+		entries = {
 			"Changed: General loot notifications can now be hidden separately for items, money, and personal currencies",
 			"Changed: Quality-of-life options are now organized into expandable sections",
 			"Changed: Option names were shortened"
@@ -72,13 +79,6 @@ COM.CHANGELOG = {
 		date = "2026-07-19",
 		entries = {
 			"Added: Automatically sells all copies of items marked per character and, optionally, all poor-quality items when a merchant window opens"
-		}
-	},
-	{
-		version = "v1.11",
-		date = "2026-07-18",
-		entries = {
-			"Minor code adjustments"
 		}
 	}
 }
