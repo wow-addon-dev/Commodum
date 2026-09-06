@@ -8,6 +8,14 @@ COM.CHANGELOG = {
 		version = version,
 		date = buildDate ~= "" and buildDate or nil,
 		entries = {
+			"Added: TOC version for patch 12.1.5 [retail]",
+			"Changed: Quality-of-life options are now grouped into User Interface and Merchant Actions, with loot notifications under User Interface and poor-quality item sales before marked item sales"
+		}
+	},
+	{
+		version = "v1.21",
+		date = "2026-08-30",
+		entries = {
 			"Minor code adjustments"
 		}
 	},
@@ -72,13 +80,6 @@ COM.CHANGELOG = {
 		date = "2026-07-21",
 		entries = {
 			"Refactoring of the addon structure and source code"
-		}
-	},
-	{
-		version = "v1.12",
-		date = "2026-07-19",
-		entries = {
-			"Added: Automatically sells all copies of items marked per character and, optionally, all poor-quality items when a merchant window opens"
 		}
 	}
 }
