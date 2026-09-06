@@ -92,8 +92,6 @@ function Options:Initialize()
 		shownPredicate	= isInterfaceExpanded
 	})
 
-	local _, isLootToastsExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.quality-of-life.section.loot-toasts"])
-
 	-- Hide Loot Toasts
 	local initializerHideLootToasts, settingHideLootToasts = AWL.Settings:AddCheckbox(category, {
 		variableTable	= COM.Settings.qualityOfLife,
@@ -103,7 +101,7 @@ function Options:Initialize()
 		tooltip			= L["options.quality-of-life.hide-loot-toasts.tooltip"],
 		default			= false,
 		onClick			= function() QualityOfLife:ApplyLootToastSetting() end,
-		shownPredicate	= isLootToastsExpanded
+		shownPredicate	= isInterfaceExpanded
 	})
 
 	-- Hide Item Loot Toasts
@@ -116,7 +114,7 @@ function Options:Initialize()
 		default			= true,
 		parentInit		= initializerHideLootToasts,
 		parentCondition	= function() return settingHideLootToasts:GetValue() end,
-		shownPredicate	= isLootToastsExpanded
+		shownPredicate	= isInterfaceExpanded
 	})
 
 	-- Hide Money Loot Toasts
@@ -129,7 +127,7 @@ function Options:Initialize()
 		default			= true,
 		parentInit		= initializerHideLootToasts,
 		parentCondition	= function() return settingHideLootToasts:GetValue() end,
-		shownPredicate	= isLootToastsExpanded
+		shownPredicate	= isInterfaceExpanded
 	})
 
 	-- Hide Currency Loot Toasts
@@ -142,7 +140,7 @@ function Options:Initialize()
 		default			= true,
 		parentInit		= initializerHideLootToasts,
 		parentCondition	= function() return settingHideLootToasts:GetValue() end,
-		shownPredicate	= isLootToastsExpanded
+		shownPredicate	= isInterfaceExpanded
 	})
 
 	local _, isMerchantExpanded = AWL.Settings:AddExpandableHeader(layout, L["options.quality-of-life.section.merchant"])
@@ -154,6 +152,17 @@ function Options:Initialize()
 		variableName	= "auto-repair",
 		name			= L["options.quality-of-life.auto-repair.name"],
 		tooltip			= L["options.quality-of-life.auto-repair.tooltip"],
+		default			= false,
+		shownPredicate	= isMerchantExpanded
+	})
+
+	-- Automatically Sell Poor-Quality Items
+	AWL.Settings:AddCheckbox(category, {
+		variableTable	= COM.Settings.qualityOfLife,
+		settingKey		= addonName .. "_auto-sell-poor",
+		variableName	= "auto-sell-poor",
+		name			= L["options.auto-sell.poor.name"],
+		tooltip			= L["options.auto-sell.poor.tooltip"],
 		default			= false,
 		shownPredicate	= isMerchantExpanded
 	})
@@ -184,17 +193,6 @@ function Options:Initialize()
 		},
 		parentInit		= initializerAutoSellMarked,
 		parentCondition	= function() return settingAutoSellMarked:GetValue() end,
-		shownPredicate	= isMerchantExpanded
-	})
-
-	-- Automatically Sell Poor-Quality Items
-	AWL.Settings:AddCheckbox(category, {
-		variableTable	= COM.Settings.qualityOfLife,
-		settingKey		= addonName .. "_auto-sell-poor",
-		variableName	= "auto-sell-poor",
-		name			= L["options.auto-sell.poor.name"],
-		tooltip			= L["options.auto-sell.poor.tooltip"],
-		default			= false,
 		shownPredicate	= isMerchantExpanded
 	})
 
