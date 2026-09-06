@@ -1,3 +1,7 @@
+**v1.22 (2026-09-06)**
+- Added: TOC version for patch 12.1.5 [retail]
+- Changed: Quality-of-life options are now grouped into User Interface and Merchant Actions, with loot notifications under User Interface and poor-quality item sales before marked item sales
+
 **v1.21 (2026-08-30)**
 - Minor code adjustments
 
